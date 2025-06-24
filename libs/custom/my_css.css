@@ -87,6 +87,11 @@ h4 {
   text-align: center;
 }
 
+/*  ================ Vitae Section ================ */
+#docs-section h4 {
+  letter-spacing: normal;
+}
+
 /*  ================ Project styling  ================ */
 .project-container {
   margin-bottom: 30px;
