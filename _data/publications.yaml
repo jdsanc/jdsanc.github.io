@@ -1,7 +1,7 @@
 papers:
 
   - title: "Effect of ion to ligand ratio on the aqueous to organic relative solubility of a lanthanide–ligand complex"
-    authors: "<b>Thomas J. Summers<sup>‡</sup></b>, <b>Jesus Diaz Sanchez<sup>‡</sup></b>, and David C. Cantu"
+    authors: "Thomas J. Summers<sup>‡</sup>, <b>Jesus Diaz Sanchez<sup>‡</sup></b>, and David C. Cantu"
     venue: "PCCP"
     paper_pdf: "assets/publications/2023_lanthanide-umbrella/paper.pdf"
     #code: "https://github.com/coleygroup/lanthanide-solubility"
