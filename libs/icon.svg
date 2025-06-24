@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 120 120" width="120" height="120"
+     role="img" aria-label="Benzene icon, hydrogens omitted">
+
+  <style>
+    .carbon { fill:#000; }
+    .bond   { stroke:#000; stroke-width:8; stroke-linecap:round; }
+    .pi     { stroke:#000; stroke-width:4; stroke-dasharray:8 8;
+              fill:none; stroke-linecap:round; }
+  </style>
+
+  <g id="ring" transform="translate(60 60)">
+    <line class="bond" x1="0"  y1="-48" x2="41.6"  y2="-24"/>
+    <line class="bond" x1="41.6" y1="-24" x2="41.6" y2="24"/>
+    <line class="bond" x1="41.6" y1="24"  x2="0"     y2="48"/>
+    <line class="bond" x1="0"    y1="48"  x2="-41.6" y2="24"/>
+    <line class="bond" x1="-41.6" y1="24" x2="-41.6" y2="-24"/>
+    <line class="bond" x1="-41.6" y1="-24" x2="0"    y2="-48"/>
+
+    <circle class="carbon" cx="0"      cy="-48" r="10"/>
+    <circle class="carbon" cx="41.6"   cy="-24" r="10"/>
+    <circle class="carbon" cx="41.6"   cy="24"  r="10"/>
+    <circle class="carbon" cx="0"      cy="48"  r="10"/>
+    <circle class="carbon" cx="-41.6"  cy="24"  r="10"/>
+    <circle class="carbon" cx="-41.6"  cy="-24" r="10"/>
+
+    <polygon class="pi" points="0,-30 26,-15 26,15 0,30 -26,15 -26,-15"/>
+  </g>
+</svg>
