@@ -6,22 +6,23 @@ title: Home
 <div class="docs-section" id="bio">
   <h4>Bio</h4>
   <p>
-  Hello! I am Wenhao Gao (高文昊), a researcher in AI and molecular science, currently completing my Ph.D. at MIT with Professor <a href="https://coley.mit.edu/" target="_blank">Connor W. Coley</a>.
-  My current research focuses on advancing molecular design by developing AI-driven models that integrate generative modeling with chemical synthesis, aimed at enabling scalable, synthesizable, and efficient exploration of chemical space.
-  My long-term goal is to systematize molecular design methodologies to enable the discovery of novel functional molecules at scale, with potential applications in drug discovery, sustainability, and beyond.
+    Hello! I am Jesus Diaz Sanchez, a researcher in AI and molecular science, currently completing my Ph.D. at MIT with
+    Professor <a href="https://gomezbombarelli.mit.edu/" target="_blank">Rafael Gomez-Bombarelli</a>.
+    My current research focuses on advancing molecular design by developing AI-driven models that integrate generative
+    modeling with chemical synthesis, aimed at enabling scalable, synthesizable, and efficient exploration of chemical
+    space.
+    My long-term goal is to build agentic systems that enable the discovery of novel functional
+    molecules at scale, with potential applications in drug discovery, sustainability, and beyond.
   </p>
-  <p>
-  In Fall 2025, I will begin my postdoctoral research at Stanford University with Professor <a href="https://statmech.stanford.edu/" target="_blank">Grant Rotskoff</a> and Professor 
-  <a href="https://cs.stanford.edu/~ermon/" target="_blank">Stefano Ermon</a>, 
-  where I will work on combining physical modeling with data-driven approaches to enhance biomolecular conformational sampling. 
-  I will be joining <a href="https://cbe.seas.upenn.edu/" target="_blank">the CBE department</a> at the University of Pennsylvania, 
-  affiliated with <a href="https://ideas.seas.upenn.edu/" target="_blank">the IDEAS initiative</a>, and will start to recruit students from 2026 Fall. If you are interested in joining my research group, please feel free to reach out!
-  </p>
-  <p>
-    I am grateful to have my research supported by <a href="https://research.google/outreach/phd-fellowship/recipients/" target="_blank">the Google PhD Fellowship</a> and 
-  <a href="https://news.mit.edu/2023/takeda-fellows-leveraging-ai-positively-impact-human-health-0112" target="_blank">the Takeda Fellowship</a>, 
-  and I am honored to be a recipient of the D.E. Shaw Research Fellowship and recognized among <a href="https://www.cas.org/about/futureleaders" target="_blank">the CAS Future Leaders</a> in 2025.
-    You can find more information about my research, publications, and projects, as well as my professional and academic background below. 
+  <!--<p>
+    I am grateful to have my research supported by <a href="https://research.google/outreach/phd-fellowship/recipients/"
+      target="_blank">the Google PhD Fellowship</a> and
+    <a href="https://news.mit.edu/2023/takeda-fellows-leveraging-ai-positively-impact-human-health-0112"
+      target="_blank">the Takeda Fellowship</a>,
+    and I am honored to be a recipient of the D.E. Shaw Research Fellowship and recognized among <a
+      href="https://www.cas.org/about/futureleaders" target="_blank">the CAS Future Leaders</a> in 2025.
+    You can find more information about my research, publications, and projects, as well as my professional and academic
+    background below.
   </p>
 
   <!-- <p>
@@ -54,7 +55,7 @@ This fall, I am actively seeking postdoctoral and faculty positions! You can fin
   My research interests span in acelerating chemical discovery with AI. 
   If there are opportunities to present in your school, institute, group, seminar, workshop etc., I really appreciate it! 
   </p> -->
-  
+
 </div>
 
 
@@ -95,15 +96,15 @@ This fall, I am actively seeking postdoctoral and faculty positions! You can fin
     <li>
       {% if exp.category == "work" %}
       <div class="direction-l">
-      {% else %}
-      <div class="direction-r">
-      {% endif %}
-        <div class="flag-wrapper">
-          <span class="flag">{{ exp.place }}</span>
-          <span class="time-wrapper"><span class="time">{{ exp.time }}</span></span>
+        {% else %}
+        <div class="direction-r">
+          {% endif %}
+          <div class="flag-wrapper">
+            <span class="flag">{{ exp.place }}</span>
+            <span class="time-wrapper"><span class="time">{{ exp.time }}</span></span>
+          </div>
+          <div class="desc"><b>{{ exp.title }}</b> <br /> {{ exp.subtitle }}</div>
         </div>
-        <div class="desc"><b>{{ exp.title }}</b> <br/> {{ exp.subtitle }}</div>
-      </div>
     </li>
     {% endfor %}
   </ul>
@@ -115,90 +116,95 @@ This fall, I am actively seeking postdoctoral and faculty positions! You can fin
 <div class="docs-section" id="publications">
   <h4>Publications</h4>
 
-  <p>Most recent publications on <a href="{{ site.data.main_info.google_scholar }}" target="_blank">Google Scholar</a>.<br/>
-  <sup>‡</sup> indicates equal contribution.
+  <p>Most recent publications on <a href="{{ site.data.main_info.google_scholar }}" target="_blank">Google
+      Scholar</a>.<br />
+    <sup>‡</sup> indicates equal contribution.
   </p>
 
   <ul class="tab-nav">
-    <li><div class="button active" data-ref="#papers-selected">Selected</div></li>
-    <li><div class="button" data-ref="#papers-all">All</div></li>
+    <li>
+      <div class="button active" data-ref="#papers-selected">Selected</div>
+    </li>
+    <li>
+      <div class="button" data-ref="#papers-all">All</div>
+    </li>
   </ul>
 
   <div class="tab-content">
     <div class="tab-pane active" id="papers-selected">
       {% assign selected_papers = site.data.publications.papers | where: "selected", "y" %}
       {% for paper in selected_papers %}
-        <div class="paper">
-          <p class="title"><b>{{ paper.title }}</b></p>
-          <p>{{ paper.authors }}</p>
-          <p><i>{{ paper.venue }}</i></p>
-           <div class="paper-buttons">
-            {% if paper.paper_pdf %}
-              <a class="button" href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">Paper</a>
-            {% endif %}
+      <div class="paper">
+        <p class="title"><b>{{ paper.title }}</b></p>
+        <p>{{ paper.authors }}</p>
+        <p><i>{{ paper.venue }}</i></p>
+        <div class="paper-buttons">
+          {% if paper.paper_pdf %}
+          <a class="button" href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">Paper</a>
+          {% endif %}
 
-            {% if paper.slides %}
-              <a class="button" href="{{ paper.slides | prepend: site.baseurl }}" target="_blank">Slides</a>
-            {% endif %}
+          {% if paper.slides %}
+          <a class="button" href="{{ paper.slides | prepend: site.baseurl }}" target="_blank">Slides</a>
+          {% endif %}
 
-            {% if paper.poster %}
-              <a class="button" href="{{ paper.poster | prepend: site.baseurl }}" target="_blank">Poster</a>
-            {% endif %}
+          {% if paper.poster %}
+          <a class="button" href="{{ paper.poster | prepend: site.baseurl }}" target="_blank">Poster</a>
+          {% endif %}
 
-            {% if paper.video %}
-              <a class="button" href="{{ paper.video }}" target="_blank">Video</a>
-            {% endif %}
+          {% if paper.video %}
+          <a class="button" href="{{ paper.video }}" target="_blank">Video</a>
+          {% endif %}
 
-            {% if paper.code %}
-              <a class="button" href="{{ paper.code }}" target="_blank">Code</a>
-            {% endif %}
+          {% if paper.code %}
+          <a class="button" href="{{ paper.code }}" target="_blank">Code</a>
+          {% endif %}
 
-            {% if paper.data %}
-              <a class="button" href="{{ paper.data }}" target="_blank">Data</a>
-            {% endif %}
+          {% if paper.data %}
+          <a class="button" href="{{ paper.data }}" target="_blank">Data</a>
+          {% endif %}
 
-          </div>
         </div>
+      </div>
       {% endfor %}
     </div>
 
     <div class="tab-pane" id="papers-all">
       {% for paper in site.data.publications.papers %}
-        <div class="paper">
-          <p class="title"><b>{{ paper.title }}</b></p>
-          <p>{{ paper.authors }}</p>
-          <p><i>{{ paper.venue }}</i></p>
-           <div class="paper-buttons">
-            {% if paper.paper_pdf %}
-              <a class="button" href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">Paper</a>
-            {% endif %}
+      <div class="paper">
+        <p class="title"><b>{{ paper.title }}</b></p>
+        <p>{{ paper.authors }}</p>
+        <p><i>{{ paper.venue }}</i></p>
+        <div class="paper-buttons">
+          {% if paper.paper_pdf %}
+          <a class="button" href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">Paper</a>
+          {% endif %}
 
-            {% if paper.slides %}
-              <a class="button" href="{{ paper.slides | prepend: site.baseurl }}" target="_blank">Slides</a>
-            {% endif %}
+          {% if paper.slides %}
+          <a class="button" href="{{ paper.slides | prepend: site.baseurl }}" target="_blank">Slides</a>
+          {% endif %}
 
-            {% if paper.poster %}
-              <a class="button" href="{{ paper.poster | prepend: site.baseurl }}" target="_blank">Poster</a>
-            {% endif %}
+          {% if paper.poster %}
+          <a class="button" href="{{ paper.poster | prepend: site.baseurl }}" target="_blank">Poster</a>
+          {% endif %}
 
-            {% if paper.video %}
-              <a class="button" href="{{ paper.video }}" target="_blank">Video</a>
-            {% endif %}
+          {% if paper.video %}
+          <a class="button" href="{{ paper.video }}" target="_blank">Video</a>
+          {% endif %}
 
-            {% if paper.code %}
-              <a class="button" href="{{ paper.code }}" target="_blank">Code</a>
-            {% endif %}
+          {% if paper.code %}
+          <a class="button" href="{{ paper.code }}" target="_blank">Code</a>
+          {% endif %}
 
-            {% if paper.data %}
-              <a class="button" href="{{ paper.data }}" target="_blank">Data</a>
-            {% endif %}
+          {% if paper.data %}
+          <a class="button" href="{{ paper.data }}" target="_blank">Data</a>
+          {% endif %}
 
-            {% if paper.website %}
-              <a class="button" href="{{ paper.website }}" target="_blank">Website</a>
-            {% endif %}
+          {% if paper.website %}
+          <a class="button" href="{{ paper.website }}" target="_blank">Website</a>
+          {% endif %}
 
-          </div>
         </div>
+      </div>
       {% endfor %}
     </div>
   </div>
@@ -293,5 +299,6 @@ This fall, I am actively seeking postdoctoral and faculty positions! You can fin
 
 <div class="docs-section" id="template">
   <h5>Acknowledgement</h5>
-  This website was built with jekyll based on a template by <a href="http://web.media.mit.edu/~msaveski/"> Martin Saveski </a>
+  This website was built with jekyll based on a template by <a href="http://web.media.mit.edu/~msaveski/"> Martin
+    Saveski </a>
 </div>
