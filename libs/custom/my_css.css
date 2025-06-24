@@ -87,25 +87,6 @@ h4 {
   text-align: center;
 }
 
-/*  ================ Bio Section ================ */
-#bio {
-  max-width: 720px;
-  margin: 4rem auto;
-  padding: 0 1.25rem;
-}
-
-#bio h4 {
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-}
-
-#bio p {
-  margin-bottom: 1.25rem;
-  line-height: 1.7;
-  text-align: justify;
-  text-justify: inter-word;
-}
-
 /*  ================ Project styling  ================ */
 .project-container {
   margin-bottom: 30px;
