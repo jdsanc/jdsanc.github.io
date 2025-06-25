@@ -7,21 +7,21 @@ experiences:
 #   category: "work"
 
 - place: "MIT"
-  time: "2024 - 2028 (Expected)"
+  time: "2024 - present"
   title: "Ph.D."
   subtitle: "Theoretical and Computational Chemistry"
   category: "school"
 
-#- place: "UC San Diego"
-#  time: "May-Aug 2023"
-#  title: "Research Scientist, Intern"
-#  subtitle: "Chemistry and Biochemistry"
-#  category: "work"
+- place: "UC San Diego"
+  time: "May-Aug 2023"
+  title: "Research Scientist, Extern"
+  subtitle: "Chemistry and Biochemistry"
+  category: "work"
 
 - place: "University of Nevada, Reno"
   time: "2020 - 2024"
   title: "B.Sc."
-  subtitle: "Chemistry"
+  subtitle: "Chemistry, Minor in Computer Science (Summa Cum Laude)"
   category: "school"
 
 # - place: "Stanford"
