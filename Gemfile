@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'jekyll'
-gem 'github-pages', group: :jekyll_plugins
+gem 'github-pages', group: :jekyll_plugins if Gem::Version.new(RUBY_VERSION) < Gem::Version.new('4.0')
 
 # Core plugins that directly affect site building
 group :jekyll_plugins do
