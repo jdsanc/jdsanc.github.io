@@ -21,11 +21,7 @@ h3,
 .post-title,
 .landing-title,
 .temp-panel-heading {
-  font-family:
-    "Newsreader",
-    georgia,
-    "Times New Roman",
-    serif;
+  font-family: "Newsreader", georgia, "Times New Roman", serif;
 }
 
 // --- Palette: match reference app (zip / index.css) ---
@@ -132,9 +128,7 @@ html[data-theme="dark"] #search-toggle:focus-visible {
 
 .pub-tag {
   display: inline-block;
-  font-family:
-    "Inter",
-    sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 0.625rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -197,17 +191,14 @@ html[data-theme="dark"] .pub-tag--book {
   }
 }
 
-#navbar .navbar-nav .nav-item.active>.nav-link {
+#navbar .navbar-nav .nav-item.active > .nav-link {
   color: var(--temp-primary) !important;
   border-bottom: 1px solid var(--temp-accent-blue);
   padding-bottom: 0.25rem;
 }
 
 #navbar .navbar-brand.title {
-  font-family:
-    "Newsreader",
-    georgia,
-    serif;
+  font-family: "Newsreader", georgia, serif;
   letter-spacing: 0.02em;
   color: var(--temp-primary);
 }
@@ -233,10 +224,7 @@ html[data-theme="dark"] .pub-tag--book {
 }
 
 .landing-page .landing-tagline {
-  font-family:
-    "Newsreader",
-    georgia,
-    serif;
+  font-family: "Newsreader", georgia, serif;
   font-size: 1.5rem;
   font-style: italic;
   line-height: 1.6;
@@ -378,9 +366,7 @@ html[data-theme="dark"] .landing-page .temp-panel--updates {
   text-transform: uppercase;
   vertical-align: top;
   width: 28%;
-  font-family:
-    "Inter",
-    sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .landing-page .temp-panel--updates .news td {
@@ -440,7 +426,7 @@ html[data-theme="dark"] .landing-page .temp-panel--updates {
   gap: 0;
 }
 
-.publications ol.bibliography>li {
+.publications ol.bibliography > li {
   margin: 0;
   padding: 1.5rem 0;
   border: none;
@@ -466,9 +452,7 @@ html[data-theme="dark"] .landing-page .temp-panel--updates {
 }
 
 .publications .title {
-  font-family:
-    "Inter",
-    sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 1.25rem;
   font-weight: 700;
   line-height: 1.3;

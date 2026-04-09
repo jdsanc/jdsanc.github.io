@@ -101,9 +101,10 @@ pagination:
 
 {% endif %}
 
-  {% if site.posts.size == 0 %}
-    <p class="text-muted mt-4">No posts yet.</p>
-  {% endif %}
+{% if site.posts.size == 0 %}
+
+<p class="text-muted mt-4">No posts yet.</p>
+{% endif %}
 
   <ul class="post-list">
 
