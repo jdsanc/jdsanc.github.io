@@ -16,6 +16,7 @@
 /* Your project partials — convert these files to `@use "variables";`
    (or `@use "variables" as *;`) inside each file and qualify variables if needed. */
 @use "themes";
+@use "temp-theme";
 @use "layout";
 
 // Core styles organized by usage
@@ -37,3 +38,5 @@
 @use "font-awesome/brands";
 @use "font-awesome/solid";
 @use "font-awesome/regular";
+
+@use "temp-theme-pub-overrides";

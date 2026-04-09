@@ -1,0 +1,655 @@
+/*******************************************************************************
+ * Minimal surface + accessible contrast. Accent color for hierarchy & links only.
+ ******************************************************************************/
+
+// --- Typography ---
+body {
+  font-family:
+    "Inter",
+    -apple-system,
+    blinkmacsystemfont,
+    "Segoe UI",
+    roboto,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+.post-title,
+.landing-title,
+.temp-panel-heading {
+  font-family:
+    "Newsreader",
+    georgia,
+    "Times New Roman",
+    serif;
+}
+
+// --- Palette: match reference app (zip / index.css) ---
+:root {
+  --temp-primary: #111111;
+  --temp-secondary: #666666;
+  --temp-muted: #444444;
+  --temp-accent-blue: #005a9c;
+  --temp-accent-emerald: #0d7a6a;
+  --temp-accent-pink: #e88a85;
+  --temp-surface: #ffffff;
+  --temp-outline: #eeeeee;
+  --temp-surface-low: #fafafa;
+
+  --global-bg-color: var(--temp-surface);
+  --global-text-color: var(--temp-primary);
+  --global-text-color-light: var(--temp-muted);
+  --global-theme-color: var(--temp-accent-blue);
+  --global-hover-color: #004a80;
+  --global-hover-text-color: #ffffff;
+  --global-divider-color: var(--temp-outline);
+  --global-card-bg-color: transparent;
+  --global-code-bg-color: rgba(0, 90, 156, 0.07);
+  --global-footer-bg-color: var(--temp-surface);
+  --global-footer-text-color: var(--temp-secondary);
+  --global-footer-link-color: var(--temp-accent-blue);
+  --global-distill-app-color: var(--temp-secondary);
+  --global-highlight-color: var(--temp-accent-pink);
+}
+
+// --- Dark: match reference app .dark tokens ---
+html[data-theme="dark"] {
+  --temp-primary: #f3f4f6;
+  --temp-secondary: #9ca3af;
+  --temp-muted: #d1d5db;
+  --temp-accent-blue: #60a5fa;
+  --temp-accent-emerald: #34d399;
+  --temp-accent-pink: #fb7185;
+  --temp-surface: #111827;
+  --temp-outline: #374151;
+  --temp-surface-low: #1f2937;
+
+  --global-bg-color: var(--temp-surface);
+  --global-text-color: var(--temp-primary);
+  --global-text-color-light: var(--temp-muted);
+  --global-hover-color: #93c5fd;
+  --global-card-bg-color: transparent;
+  --global-code-bg-color: rgba(124, 180, 252, 0.1);
+  --global-footer-bg-color: var(--temp-surface);
+  --global-footer-text-color: var(--temp-secondary);
+  --global-footer-link-color: var(--temp-accent-blue);
+}
+
+::selection {
+  background: rgba(0, 90, 156, 0.1);
+  color: var(--temp-accent-blue);
+}
+
+html[data-theme="dark"] ::selection {
+  background: rgba(96, 165, 250, 0.18);
+  color: var(--temp-primary);
+}
+
+// --- Focus: visible keyboard paths (hide outline on click) ---
+a:focus-visible,
+button:focus-visible,
+#light-toggle:focus-visible,
+#search-toggle:focus-visible {
+  outline: 2px solid var(--temp-accent-blue);
+  outline-offset: 2px;
+}
+
+html[data-theme="dark"] a:focus-visible,
+html[data-theme="dark"] button:focus-visible,
+html[data-theme="dark"] #light-toggle:focus-visible,
+html[data-theme="dark"] #search-toggle:focus-visible {
+  outline-color: var(--temp-accent-blue);
+}
+
+// --- Inline accents ---
+.temp-hl-blue {
+  color: var(--temp-accent-blue);
+}
+
+.temp-hl-emerald {
+  color: var(--temp-accent-emerald);
+}
+
+.temp-hl-pink {
+  color: var(--temp-accent-pink);
+}
+
+// --- Publication tags: solid pills, white label (reference layout) ---
+.pub-title-row {
+  gap: 0.75rem 1rem;
+  width: 100%;
+}
+
+@media (min-width: 576px) {
+  .pub-title-row {
+    align-items: center;
+  }
+}
+
+.pub-tag {
+  display: inline-block;
+  font-family:
+    "Inter",
+    sans-serif;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.42rem 0.75rem;
+  border-radius: 0.25rem;
+  line-height: 1.2;
+  flex-shrink: 0;
+  color: #ffffff;
+}
+
+// Reference app: emerald journal, pink conference, blue thesis/book
+.pub-tag--article {
+  background: var(--temp-accent-emerald);
+}
+
+.pub-tag--inproceedings,
+.pub-tag--incollection {
+  background: var(--temp-accent-pink);
+}
+
+.pub-tag--phdthesis,
+.pub-tag--mastersthesis,
+.pub-tag--book {
+  background: var(--temp-accent-blue);
+}
+
+html[data-theme="dark"] .pub-tag--article {
+  background: var(--temp-accent-emerald);
+}
+
+html[data-theme="dark"] .pub-tag--inproceedings,
+html[data-theme="dark"] .pub-tag--incollection {
+  background: var(--temp-accent-pink);
+}
+
+html[data-theme="dark"] .pub-tag--phdthesis,
+html[data-theme="dark"] .pub-tag--mastersthesis,
+html[data-theme="dark"] .pub-tag--book {
+  background: var(--temp-accent-blue);
+}
+
+// --- Navbar: one line, no extra chrome ---
+#navbar.navbar {
+  backdrop-filter: blur(12px);
+  background-color: color-mix(in srgb, var(--temp-surface) 92%, transparent) !important;
+  border-bottom: 1px solid var(--temp-outline) !important;
+  box-shadow: none !important;
+}
+
+#navbar .navbar-nav .nav-link {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--temp-secondary) !important;
+
+  &:hover {
+    color: var(--temp-accent-blue) !important;
+  }
+}
+
+#navbar .navbar-nav .nav-item.active>.nav-link {
+  color: var(--temp-primary) !important;
+  border-bottom: 1px solid var(--temp-accent-blue);
+  padding-bottom: 0.25rem;
+}
+
+#navbar .navbar-brand.title {
+  font-family:
+    "Newsreader",
+    georgia,
+    serif;
+  letter-spacing: 0.02em;
+  color: var(--temp-primary);
+}
+
+// --- Landing hero (reference ~mb-32 rhythm, gap-16 between columns) ---
+.landing-page .landing-hero {
+  margin-bottom: 5rem;
+}
+
+.landing-page .landing-hero.row {
+  --bs-gutter-x: 2rem;
+
+  @media (min-width: 992px) {
+    --bs-gutter-x: 4rem;
+  }
+}
+
+.landing-page .landing-title {
+  font-size: clamp(2.75rem, 6vw, 3.75rem);
+  line-height: 1.12;
+  margin-bottom: 2rem;
+  color: var(--temp-primary);
+}
+
+.landing-page .landing-tagline {
+  font-family:
+    "Newsreader",
+    georgia,
+    serif;
+  font-size: 1.5rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--temp-muted);
+  max-width: 42rem;
+  margin-bottom: 2.5rem;
+
+  a {
+    color: var(--temp-accent-blue);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.15em;
+    font-weight: 600;
+
+    &:hover {
+      text-decoration-thickness: 2px;
+    }
+  }
+}
+
+.landing-page .landing-prose {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--temp-muted);
+
+  p {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.landing-page .landing-cta-link {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--temp-primary);
+  text-decoration: none;
+  border-bottom: 2px solid var(--temp-primary);
+  padding-bottom: 0.2rem;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
+
+  &:hover {
+    color: var(--temp-accent-blue);
+    border-bottom-color: var(--temp-accent-blue);
+  }
+}
+
+.landing-page .landing-profile {
+  max-width: 22rem;
+  margin-left: auto;
+}
+
+.landing-page .landing-profile figure {
+  position: relative;
+}
+
+.landing-page .landing-profile figure::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 4px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  background: var(--temp-accent-blue);
+}
+
+.landing-page .landing-profile:hover figure::after {
+  opacity: 0.05;
+}
+
+.landing-page .landing-profile img,
+.landing-page .landing-profile picture img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 38%;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 6%);
+}
+
+.landing-page .landing-profile-meta {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--temp-secondary);
+  letter-spacing: -0.01em;
+
+  p {
+    margin-bottom: 0.35rem;
+    padding-left: 0.15rem;
+  }
+}
+
+// --- Latest updates: tinted panel + radius (reference LatestUpdates) ---
+.landing-page .temp-panel--updates {
+  margin: 3rem 0 5rem;
+  padding: 4rem 1.5rem;
+  border: none;
+  background: rgba(0, 90, 156, 0.02);
+  border-radius: 0.75rem;
+}
+
+html[data-theme="dark"] .landing-page .temp-panel--updates {
+  background: rgba(96, 165, 250, 0.04);
+}
+
+.landing-page .temp-panel-heading {
+  font-size: 1.875rem;
+  line-height: 1.25;
+  margin-bottom: 3rem;
+  padding-left: 0.5rem;
+  border-left: 4px solid var(--temp-accent-blue);
+  color: var(--temp-primary);
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--temp-accent-blue);
+    }
+  }
+}
+
+.landing-page .temp-panel--updates .news table {
+  width: 100%;
+}
+
+.landing-page .temp-panel--updates .news table tbody tr:not(:first-child) th,
+.landing-page .temp-panel--updates .news table tbody tr:not(:first-child) td {
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--temp-outline);
+}
+
+.landing-page .temp-panel--updates .news th {
+  color: var(--temp-accent-blue);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  vertical-align: top;
+  width: 28%;
+  font-family:
+    "Inter",
+    sans-serif;
+}
+
+.landing-page .temp-panel--updates .news td {
+  color: var(--temp-muted);
+  line-height: 1.65;
+}
+
+.landing-page .temp-panel--updates .news a.news-title {
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--temp-primary);
+  text-decoration: none;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: var(--temp-accent-blue);
+  }
+}
+
+// --- Selected publications header ---
+.landing-page .temp-panel-header {
+  margin-bottom: 4rem;
+  gap: 1rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--temp-outline);
+}
+
+.landing-page .temp-panel--papers .temp-panel-heading {
+  border-left: 4px solid var(--temp-accent-blue);
+  padding-left: 0.5rem;
+  margin-bottom: 0;
+}
+
+.landing-page .temp-biblio-link {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--temp-accent-blue);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 0.15s ease;
+
+  &:hover {
+    opacity: 0.7;
+    text-decoration: none;
+  }
+}
+
+// --- Publications list: hairline separators, no nested cards ---
+.publications ol.bibliography {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.publications ol.bibliography>li {
+  margin: 0;
+  padding: 1.5rem 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  border-bottom: 1px solid var(--temp-outline);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.landing-page .publications ol.bibliography > li {
+  padding: 2.5rem 0;
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.publications .title {
+  font-family:
+    "Inter",
+    sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--temp-primary);
+}
+
+.publications .author {
+  color: var(--temp-muted);
+  font-size: 0.9375rem;
+  font-weight: 400;
+}
+
+.publications .author em {
+  color: var(--temp-primary);
+  font-weight: 700;
+  font-style: normal;
+  border-bottom: none !important;
+}
+
+.publications .author a {
+  color: var(--temp-secondary);
+  border-bottom: none !important;
+  text-decoration: none;
+
+  &:hover {
+    color: var(--temp-accent-blue);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.15em;
+  }
+}
+
+.publications .periodical {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--temp-secondary);
+  margin-top: 0.35rem;
+}
+
+.publications .abbr abbr.badge {
+  border-radius: 0.35rem !important;
+  font-size: 0.625rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: none !important;
+  padding: 0.35rem 0.5rem !important;
+}
+
+.publications .links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem 1.35rem;
+  margin-top: 0.85rem;
+}
+
+.publications .links a.btn {
+  border: none !important;
+  background: transparent !important;
+  color: var(--temp-accent-blue) !important;
+  font-size: 0.6875rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  padding: 0.15rem 0 !important;
+  box-shadow: none !important;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.35rem;
+
+  &:hover {
+    text-decoration: underline !important;
+    text-underline-offset: 0.2em;
+    opacity: 0.9;
+  }
+}
+
+.publications .links .pub-link-icon {
+  font-size: 0.75rem;
+  opacity: 0.95;
+}
+
+.publications .bibtex-snippet {
+  font-size: 0.8125rem;
+  padding: 1rem 1.1rem;
+  background: var(--global-code-bg-color);
+  border-radius: 4px;
+  overflow-x: auto;
+  border: 1px solid var(--temp-outline);
+
+  code {
+    font-family: ui-monospace, "SF Mono", menlo, consolas, monospace;
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: var(--temp-primary);
+  }
+}
+
+// Outer papers block: no second box (list handles rhythm)
+.landing-page .temp-panel--papers {
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0 0 5rem;
+  background: transparent;
+}
+
+.landing-page .temp-panel--papers .publications {
+  margin-top: 0;
+}
+
+// --- Contact: open layout ---
+.landing-page #contact.social {
+  border: none;
+  border-radius: 0;
+  padding: 2.5rem 0 0;
+  margin-top: 0;
+  background: transparent;
+  border-top: 1px solid var(--temp-outline);
+}
+
+.landing-page .social .contact-icons a {
+  color: var(--temp-secondary);
+
+  &:hover {
+    color: var(--temp-accent-blue);
+  }
+}
+
+// --- Projects: soft elevation, one border ---
+.projects .card {
+  border-radius: 0.5rem;
+  border: 1px solid var(--temp-outline);
+  overflow: hidden;
+  background: var(--temp-surface);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 4%);
+}
+
+html[data-theme="dark"] .projects .card {
+  background: var(--temp-surface-low);
+  box-shadow: none;
+}
+
+// --- Footer ---
+footer.fixed-bottom,
+footer.sticky-bottom {
+  border-top: 1px solid var(--temp-outline);
+  background-color: var(--global-footer-bg-color) !important;
+}
+
+footer.fixed-bottom .container,
+footer.sticky-bottom .container {
+  color: var(--temp-secondary);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  padding-top: 5rem !important;
+  padding-bottom: 3rem !important;
+  opacity: 0.92;
+}
+
+footer.fixed-bottom a,
+footer.sticky-bottom a {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgb(102 102 102 / 0.65);
+
+  &:hover {
+    color: var(--temp-accent-blue);
+    text-decoration: none;
+    opacity: 1;
+  }
+}
+
+html[data-theme="dark"] footer.fixed-bottom a,
+html[data-theme="dark"] footer.sticky-bottom a {
+  color: rgb(156 163 175 / 0.65);
+
+  &:hover {
+    color: var(--temp-accent-blue);
+  }
+}

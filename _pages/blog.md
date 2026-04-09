@@ -2,10 +2,10 @@
 layout: default
 permalink: /blog/
 title: blog
-nav: true
+nav: false
 nav_order: 1
 pagination:
-  enabled: true
+  enabled: false
   collection: posts
   permalink: /page/:num/
   per_page: 5
@@ -100,6 +100,10 @@ pagination:
     <hr>
 
 {% endif %}
+
+  {% if site.posts.size == 0 %}
+    <p class="text-muted mt-4">No posts yet.</p>
+  {% endif %}
 
   <ul class="post-list">
 

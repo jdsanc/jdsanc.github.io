@@ -59,7 +59,23 @@
           <!-- Other pages -->
           {% assign sorted_pages = site.pages | sort: 'nav_order' %}
           {% for p in sorted_pages %}
-            {% if p.nav and p.autogen == null %}
+            {% if p.nav and p.autogen == null and p.permalink != '/' %}
+              {% assign show_in_nav = true %}
+              {% if p.permalink == '/projects/' and site.projects.size == 0 %}
+                {% assign show_in_nav = false %}
+              {% endif %}
+              {% if p.permalink == '/cv/' %}
+                {% if p.cv_nav_ready == false %}
+                  {% assign show_in_nav = false %}
+                {% endif %}
+                {% if site.data.cv and site.data.cv.cv and site.data.cv.cv.name == 'Albert Einstein' %}
+                  {% assign show_in_nav = false %}
+                {% endif %}
+                {% if site.data.resume and site.data.resume.basics and site.data.resume.basics.name == 'Albert Einstein' %}
+                  {% assign show_in_nav = false %}
+                {% endif %}
+              {% endif %}
+              {% if show_in_nav %}
               {% if p.dropdown %}
                 {% assign has_active_child = false %}
                 {% for child in p.children %}
@@ -114,6 +130,7 @@
                     {% endif %}
                   </a>
                 </li>
+              {% endif %}
               {% endif %}
             {% endif %}
           {% endfor %}

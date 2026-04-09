@@ -8,13 +8,12 @@ middle_name:
 last_name: Diaz Sanchez
 contact_note: >
   The best way to reach me is via email.
-description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  Ph.D. Researcher at MIT. Focusing on the intersection of stochastic optimization and large-scale architectural systems.
+description: >
+  Jesus Diaz Sanchez — Ph.D. researcher at MIT. Interested in how to make sense of disparate chemical data streams for chemical reasoning.
 footer_text: >
-  Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
-  Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-  Photos from <a href="https://unsplash.com" target="_blank">Unsplash</a>.
-keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your own keywords or leave empty
+  <a href="https://github.com/jdsanc/jdsanc.github.io" target="_blank" rel="noopener">Source</a> ·
+  <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a>
+keywords: Jesus Diaz Sanchez, MIT, computational chemistry, chemical informatics, machine learning, spectroscopy, molecular dynamics
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: ⚛️ # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
@@ -54,22 +53,22 @@ external_services:
 # -----------------------------------------------------------------------------
 
 navbar_fixed: true
-footer_fixed: true
-search_enabled: true
+footer_fixed: false
+search_enabled: false
 socials_in_search: true
-posts_in_search: true
+posts_in_search: false
 bib_search: true
 
 # Dimensions
-max_width: 930px
+max_width: 1024px
 
 # -----------------------------------------------------------------------------
 # Open Graph & Schema.org
 # -----------------------------------------------------------------------------
 # Display links to the page with a preview object on social media.
 # see https://schema.org/docs/faq.html for more information
-serve_og_meta: false # Include Open Graph meta tags in the HTML head
-serve_schema_org: false # Include Schema.org in the HTML head
+serve_og_meta: true
+serve_schema_org: false
 og_image: # The site-wide (default for all links) Open Graph preview image
 
 # -----------------------------------------------------------------------------
@@ -91,17 +90,17 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: al-folio # blog_name will be displayed in your blog page
-blog_description: a simple whitespace theme for academics
+blog_name: Writing
+blog_description: Occasional notes on research and code.
 permalink: /blog/:year/:title/
 lsi: false # produce an index for related posts
 
-# Pagination
+# Pagination (enable when you add posts; blog page sets its own front matter)
 pagination:
-  enabled: true
+  enabled: false
 
 related_blog_posts:
-  enabled: true
+  enabled: false
   max_related: 5
 
 # Giscus comments (RECOMMENDED)
@@ -120,25 +119,15 @@ giscus:
   emit_metadata: 0
   lang: en
 
-# Disqus comments (DEPRECATED)
-disqus_shortname: al-folio # put your disqus shortname
-# https://help.disqus.com/en/articles/1717111-what-s-a-shortname
+# Disqus (off). Set a shortname string to enable on posts with disqus_comments: true
+disqus_shortname: false
 
 # External sources.
 # If you have blog posts published on medium.com or other external sources,
 # you can display them in your blog by adding a link to the RSS feed.
 # Optional: Set default categories and tags for posts from each source.
-external_sources:
-  - name: medium.com
-    rss_url: https://medium.com/@al-folio/feed
-    categories: [external-posts]
-    tags: [medium]
-  - name: Google Blog
-    posts:
-      - url: https://blog.google/technology/ai/google-gemini-update-flash-ai-assistant-io-2024/
-        published_date: 2024-05-14
-    categories: [external-posts]
-    tags: [google]
+# Add RSS or manual URLs here if you want posts from Medium / etc. on /blog/
+external_sources: []
 
 # -----------------------------------------------------------------------------
 # Newsletter
@@ -271,8 +260,8 @@ jekyll-archives:
   books:
     enabled: [year, tags, categories] # enables year, tag and category archives (remove if you need to disable one of them).
 
-display_tags: ["formatting", "images", "links", "math", "code", "blockquotes"] # these tags will be displayed on the front page of your blog
-display_categories: ["external-services"] # these categories will be displayed on the front page of your blog
+display_tags: []
+display_categories: []
 
 # -----------------------------------------------------------------------------
 # Jekyll Scholar
@@ -323,6 +312,7 @@ filtered_bibtex_keywords:
     award,
     award_name,
     bibtex_show,
+    bibtex_file,
     blog,
     code,
     dimensions,
@@ -335,6 +325,7 @@ filtered_bibtex_keywords:
     pmid,
     poster,
     preview,
+    pub_links_minimal,
     selected,
     slides,
     supp,
@@ -461,7 +452,7 @@ third_party_libraries:
     version: "5.5.0"
   google_fonts:
     url:
-      fonts: "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&display=swap"
+      fonts: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Roboto:wght@300;400;500;700&display=swap"
   highlightjs:
     integrity:
       css:

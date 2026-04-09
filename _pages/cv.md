@@ -1,12 +1,13 @@
 ---
 layout: cv
 permalink: /cv/
-title: CV
+title: resume
 nav: true
-nav_order: 5
-cv_pdf: /assets/pdf/example_pdf.pdf # you can also use external links here
-cv_format: rendercv # options: rendercv, jsonresume
-description: This is a description of the page. You can modify it in '_pages/cv.md'. You can also change or remove the top pdf download button.
+nav_order: 3
+# Set to true when you want “Resume” in the navbar (e.g. after you add a PDF).
+cv_nav_ready: false
+cv_format: rendercv
+description: CV — MIT Ph.D. researcher; chemical data streams and reasoning.
 toc:
   sidebar: left
 ---

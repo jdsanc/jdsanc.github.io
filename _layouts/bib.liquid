@@ -47,8 +47,27 @@
 
   <!-- Entry bib key -->
   <div id="{{ entry.key }}" class="{% if site.enable_publication_thumbnails %}col-sm-8{% else %}col-sm-10{% endif %}">
-    <!-- Title -->
-    <div class="title">{{ entry.title }}</div>
+    <!-- Title + type tag (temp-style pills; optional bib field `tag` overrides auto label) -->
+    {% assign pub_tag_label = entry.tag %}
+    {% if pub_tag_label == null or pub_tag_label == blank %}
+      {% if entry.type == 'article' %}
+        {% assign pub_tag_label = 'Journal' %}
+      {% elsif entry.type == 'inproceedings' or entry.type == 'incollection' %}
+        {% assign pub_tag_label = 'Conference' %}
+      {% elsif entry.type == 'phdthesis' or entry.type == 'mastersthesis' %}
+        {% assign pub_tag_label = 'Thesis' %}
+      {% elsif entry.type == 'book' %}
+        {% assign pub_tag_label = 'Book' %}
+      {% else %}
+        {% assign pub_tag_label = '' %}
+      {% endif %}
+    {% endif %}
+    <div class="pub-title-row d-flex flex-column flex-sm-row justify-content-between align-items-start mb-2">
+      <div class="title flex-grow-1">{{ entry.title }}</div>
+      {% if pub_tag_label %}
+        <span class="pub-tag pub-tag--{{ entry.type | replace: '_', '-' }}">{{ pub_tag_label }}</span>
+      {% endif %}
+    </div>
     <!-- Author -->
     <div class="author">
       {% assign author_array_size = entry.author_array | size %}
@@ -189,77 +208,152 @@
 
     <!-- Links/Buttons -->
     <div class="links">
-      {% if entry.award %}
-        <a class="award btn btn-sm z-depth-0" role="button">
-          {%- if entry.award_name %}{{ entry.award_name }}{% else %}Awarded{% endif -%}
-        </a>
-      {% endif %}
-      {% if entry.abstract %}
-        <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
-      {% endif %}
-      {% if entry.doi %}
-        <a href="https://doi.org/{{ entry.doi }}" class="btn btn-sm z-depth-0" role="button">DOI</a>
-      {% endif %}
-      {% if entry.arxiv %}
-        <a href="http://arxiv.org/abs/{{ entry.arxiv }}" class="btn btn-sm z-depth-0" role="button">arXiv</a>
-      {% endif %}
-      {% if entry.hal %}
-        <a href="https://hal.science/{{ entry.hal }}" class="btn btn-sm z-depth-0" role="button">HAL</a>
-      {% endif %}
-      {% if entry.bibtex_show %}
-        <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a>
-      {% endif %}
-      {% if entry.html %}
-        {% if entry.html contains '://' %}
-          <a href="{{ entry.html }}" class="btn btn-sm z-depth-0" role="button">HTML</a>
-        {% else %}
-          <a href="{{ entry.html | prepend: '/assets/html/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">HTML</a>
+      {% if entry.pub_links_minimal %}
+        {% if entry.pdf %}
+          {% if entry.pdf contains '://' %}
+            <a
+              href="{{ entry.pdf }}"
+              class="btn btn-sm z-depth-0 pub-link"
+              role="button"
+              rel="external nofollow noopener"
+              target="_blank"
+              ><i class="fa-solid fa-up-right-from-square pub-link-icon" aria-hidden="true"></i> PDF</a
+            >
+          {% else %}
+            <a
+              href="{{ entry.pdf | prepend: '/assets/pdf/' | relative_url }}"
+              class="btn btn-sm z-depth-0 pub-link"
+              role="button"
+              ><i class="fa-solid fa-up-right-from-square pub-link-icon" aria-hidden="true"></i> PDF</a
+            >
+          {% endif %}
         {% endif %}
-      {% endif %}
-      {% if entry.pdf %}
-        {% if entry.pdf contains '://' %}
-          <a href="{{ entry.pdf }}" class="btn btn-sm z-depth-0" role="button">PDF</a>
-        {% else %}
-          <a href="{{ entry.pdf | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">PDF</a>
+        {% if entry.bibtex_file %}
+          {% if entry.bibtex_file contains '://' %}
+            <a
+              href="{{ entry.bibtex_file }}"
+              class="btn btn-sm z-depth-0 pub-link"
+              role="button"
+              download
+              rel="external nofollow noopener"
+              target="_blank"
+              ><i class="fa-solid fa-quote-right pub-link-icon" aria-hidden="true"></i> BibTeX</a
+            >
+          {% else %}
+            <a
+              href="{{ entry.bibtex_file | prepend: '/assets/bib/' | relative_url }}"
+              class="btn btn-sm z-depth-0 pub-link"
+              role="button"
+              download
+              ><i class="fa-solid fa-quote-right pub-link-icon" aria-hidden="true"></i> BibTeX</a
+            >
+          {% endif %}
+        {% elsif entry.bibtex_show %}
+          <a class="bibtex btn btn-sm z-depth-0 pub-link" role="button"><i class="fa-solid fa-quote-right pub-link-icon" aria-hidden="true"></i> BibTeX</a>
         {% endif %}
-      {% endif %}
-      {% if entry.supp %}
-        {% if entry.supp contains '://' %}
-          <a href="{{ entry.supp }}" class="btn btn-sm z-depth-0" role="button">Supp</a>
-        {% else %}
-          <a href="{{ entry.supp | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">Supp</a>
+      {% else %}
+        {% if entry.award %}
+          <a class="award btn btn-sm z-depth-0" role="button">
+            {%- if entry.award_name %}{{ entry.award_name }}{% else %}Awarded{% endif -%}
+          </a>
         {% endif %}
-      {% endif %}
-      {% if entry.video and site.enable_video_embedding %}
-        <a class="abstract btn btn-sm z-depth-0" role="button">Video</a>
-      {% elsif entry.video %}
-        <a href="{{ entry.video }}" class="btn btn-sm z-depth-0" role="button">Video</a>
-      {% endif %}
-      {% if entry.blog %}
-        <a href="{{ entry.blog }}" class="btn btn-sm z-depth-0" role="button">Blog</a>
-      {% endif %}
-      {% if entry.code %}
-        <a href="{{ entry.code }}" class="btn btn-sm z-depth-0" role="button">Code</a>
-      {% endif %}
-      {% if entry.poster %}
-        {% if entry.poster contains '://' %}
-          <a href="{{ entry.poster }}" class="btn btn-sm z-depth-0" role="button">Poster</a>
-        {% else %}
-          <a href="{{ entry.poster | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">Poster</a>
+        {% if entry.abstract %}
+          <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
         {% endif %}
-      {% endif %}
-      {% if entry.slides %}
-        {% if entry.slides contains '://' %}
-          <a href="{{ entry.slides }}" class="btn btn-sm z-depth-0" role="button">Slides</a>
-        {% else %}
-          <a href="{{ entry.slides | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">Slides</a>
+        {% if entry.doi %}
+          <a href="https://doi.org/{{ entry.doi }}" class="btn btn-sm z-depth-0" role="button">DOI</a>
         {% endif %}
-      {% endif %}
-      {% if entry.website %}
-        <a href="{{ entry.website }}" class="btn btn-sm z-depth-0" role="button">Website</a>
+        {% if entry.arxiv %}
+          <a href="http://arxiv.org/abs/{{ entry.arxiv }}" class="btn btn-sm z-depth-0" role="button">arXiv</a>
+        {% endif %}
+        {% if entry.hal %}
+          <a href="https://hal.science/{{ entry.hal }}" class="btn btn-sm z-depth-0" role="button">HAL</a>
+        {% endif %}
+        {% if entry.bibtex_file %}
+          {% if entry.bibtex_file contains '://' %}
+            <a
+              href="{{ entry.bibtex_file }}"
+              class="btn btn-sm z-depth-0 pub-link"
+              role="button"
+              download
+              rel="external nofollow noopener"
+              target="_blank"
+              ><i class="fa-solid fa-quote-right pub-link-icon" aria-hidden="true"></i> BibTeX</a
+            >
+          {% else %}
+            <a
+              href="{{ entry.bibtex_file | prepend: '/assets/bib/' | relative_url }}"
+              class="btn btn-sm z-depth-0 pub-link"
+              role="button"
+              download
+              ><i class="fa-solid fa-quote-right pub-link-icon" aria-hidden="true"></i> BibTeX</a
+            >
+          {% endif %}
+        {% elsif entry.bibtex_show %}
+          <a class="bibtex btn btn-sm z-depth-0 pub-link" role="button"><i class="fa-solid fa-quote-right pub-link-icon" aria-hidden="true"></i> BibTeX</a>
+        {% endif %}
+        {% if entry.html %}
+          {% if entry.html contains '://' %}
+            <a href="{{ entry.html }}" class="btn btn-sm z-depth-0" role="button">HTML</a>
+          {% else %}
+            <a href="{{ entry.html | prepend: '/assets/html/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">HTML</a>
+          {% endif %}
+        {% endif %}
+        {% if entry.pdf %}
+          {% if entry.pdf contains '://' %}
+            <a href="{{ entry.pdf }}" class="btn btn-sm z-depth-0 pub-link" role="button"
+              ><i class="fa-solid fa-up-right-from-square pub-link-icon" aria-hidden="true"></i> PDF</a
+            >
+          {% else %}
+            <a href="{{ entry.pdf | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0 pub-link" role="button"
+              ><i class="fa-solid fa-up-right-from-square pub-link-icon" aria-hidden="true"></i> PDF</a
+            >
+          {% endif %}
+        {% endif %}
+        {% if entry.supp %}
+          {% if entry.supp contains '://' %}
+            <a href="{{ entry.supp }}" class="btn btn-sm z-depth-0" role="button">Supp</a>
+          {% else %}
+            <a href="{{ entry.supp | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">Supp</a>
+          {% endif %}
+        {% endif %}
+        {% if entry.video and site.enable_video_embedding %}
+          <a class="abstract btn btn-sm z-depth-0" role="button">Video</a>
+        {% elsif entry.video %}
+          <a href="{{ entry.video }}" class="btn btn-sm z-depth-0" role="button">Video</a>
+        {% endif %}
+        {% if entry.blog %}
+          <a href="{{ entry.blog }}" class="btn btn-sm z-depth-0" role="button">Blog</a>
+        {% endif %}
+        {% if entry.code %}
+          <a href="{{ entry.code }}" class="btn btn-sm z-depth-0 pub-link" role="button"
+            ><i class="fa-solid fa-terminal pub-link-icon" aria-hidden="true"></i> Code</a
+          >
+        {% endif %}
+        {% if entry.poster %}
+          {% if entry.poster contains '://' %}
+            <a href="{{ entry.poster }}" class="btn btn-sm z-depth-0" role="button">Poster</a>
+          {% else %}
+            <a href="{{ entry.poster | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">Poster</a>
+          {% endif %}
+        {% endif %}
+        {% if entry.slides %}
+          {% if entry.slides contains '://' %}
+            <a href="{{ entry.slides }}" class="btn btn-sm z-depth-0 pub-link" role="button"
+              ><i class="fa-solid fa-chalkboard pub-link-icon" aria-hidden="true"></i> Slides</a
+            >
+          {% else %}
+            <a href="{{ entry.slides | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0 pub-link" role="button"
+              ><i class="fa-solid fa-chalkboard pub-link-icon" aria-hidden="true"></i> Slides</a
+            >
+          {% endif %}
+        {% endif %}
+        {% if entry.website %}
+          <a href="{{ entry.website }}" class="btn btn-sm z-depth-0" role="button">Website</a>
+        {% endif %}
       {% endif %}
     </div>
-    {% if site.enable_publication_badges %}
+    {% if site.enable_publication_badges and entry.pub_links_minimal != true %}
       {% assign entry_has_altmetric_badge = false %}
       {% if entry.altmetric and entry.altmetric != 'false' %}
         {% assign entry_has_altmetric_badge = true %}
@@ -376,12 +470,10 @@
       </div>
     {% endif %}
 
-    {% if entry.bibtex_show %}
-      <!-- Hidden bibtex block -->
+    {% if entry.bibtex_show and entry.bibtex %}
+      <!-- Inline BibTeX (use bibtex_file + .bib asset if braces are stripped from entry.bibtex) -->
       <div class="bibtex hidden">
-        {% highlight bibtex %}
-        {{- entry.bibtex | hideCustomBibtex -}}
-        {% endhighlight %}
+        <pre class="bibtex-snippet mb-0"><code>{{ entry.bibtex | hideCustomBibtex | strip }}</code></pre>
       </div>
     {% endif %}
 

@@ -1,54 +1,63 @@
 ---
 layout: default
 ---
-<div class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      {% if site.title == 'blank' %}
-        <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
-        {{ site.last_name }}
-      {% else %}
-        {{ site.title }}
+<div class="post landing-page">
+  <div class="row landing-hero align-items-start">
+    <div class="col-lg-7">
+      <header class="landing-header">
+        <h1 class="post-title landing-title">
+          {% if site.title == 'blank' %}
+            <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
+            {{ site.last_name }}
+          {% else %}
+            {{ site.title }}
+          {% endif %}
+        </h1>
+        <p class="desc landing-tagline">{{ page.subtitle }}</p>
+      </header>
+
+      <div class="landing-body landing-prose clearfix">{{ content }}</div>
+
+      <div class="landing-cta mt-4 mb-5 d-flex flex-wrap align-items-center" style="gap: 2rem;">
+        <a class="landing-cta-link" href="{{ '/cv/' | relative_url }}">Download CV</a>
+        <a class="landing-cta-link" href="#contact">Get in Touch</a>
+      </div>
+    </div>
+
+    <div class="col-lg-5 mt-4 mt-lg-0">
+      {% if page.profile %}
+        <div class="landing-profile">
+          {% if page.profile.image %}
+            {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
+            {% if page.profile.image_circular %}
+              {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle landing-profile-img' %}
+            {% else %}
+              {% assign profile_image_class = 'img-fluid z-depth-1 rounded landing-profile-img' %}
+            {% endif %}
+            {% capture sizes %}(min-width: 992px) 400px, 95vw{% endcapture %}
+            {%
+              include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
+              cache_bust=true
+            %}
+          {% endif %}
+          {% if page.profile.more_info %}
+            <div class="landing-profile-meta more-info">{{ page.profile.more_info }}</div>
+          {% endif %}
+        </div>
       {% endif %}
-    </h1>
-    <p class="desc">{{ page.subtitle }}</p>
-  </header>
+    </div>
+  </div>
 
   <article>
-    {% if page.profile %}
-      <div class="profile float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
-        {% if page.profile.image %}
-          {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
-          {% if page.profile.image_circular %}
-            {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
-          {% else %}
-            {% assign profile_image_class = 'img-fluid z-depth-1
-      rounded' %}
-          {% endif %}
-          {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px)
-      30vw, 95vw"{% endcapture %}
-          {%
-            include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
-            cache_bust=true
-          %}
-        {% endif %}
-        {% if page.profile.more_info %}
-          <div class="more-info">{{ page.profile.more_info }}</div>
-        {% endif %}
+    {% if page.announcements and page.announcements.enabled %}
+      <div class="temp-panel temp-panel--updates">
+        <h2 class="temp-panel-heading">
+          <a href="{{ '/news/' | relative_url }}">Latest Updates</a>
+        </h2>
+        {% include news.liquid limit=true %}
       </div>
     {% endif %}
 
-    <div class="clearfix">{{ content }}</div>
-
-    <!-- News -->
-    {% if page.announcements and page.announcements.enabled %}
-      <h2>
-        <a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a>
-      </h2>
-      {% include news.liquid limit=true %}
-    {% endif %}
-
-    <!-- Latest posts -->
     {% if page.latest_posts and page.latest_posts.enabled %}
       <h2>
         <a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
@@ -56,17 +65,23 @@ layout: default
       {% include latest_posts.liquid %}
     {% endif %}
 
-    <!-- Selected papers -->
     {% if page.selected_papers %}
-      <h2>
-        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">selected publications</a>
-      </h2>
-      {% include selected_papers.liquid %}
+      {% capture _selected_bib %}
+        {% bibliography --group_by none --query @*[selected=true]* %}
+      {% endcapture %}
+      {% if _selected_bib contains '<li' %}
+        <div class="temp-panel temp-panel--papers">
+          <div class="temp-panel-header d-flex flex-wrap justify-content-between align-items-baseline">
+            <h2 class="temp-panel-heading">Selected Publications</h2>
+            <a class="temp-biblio-link" href="{{ '/publications/' | relative_url }}">Full bibliography →</a>
+          </div>
+          <div class="publications">{{ _selected_bib }}</div>
+        </div>
+      {% endif %}
     {% endif %}
 
-    <!-- Social -->
     {% if page.social %}
-      <div class="social">
+      <div id="contact" class="social">
         <div class="contact-icons">{% social_links %}</div>
 
         <div class="contact-note">{{ site.contact_note }}</div>

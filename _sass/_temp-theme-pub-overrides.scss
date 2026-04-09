@@ -1,0 +1,26 @@
+// Loaded after _publications.scss so temp publication styling wins.
+
+.publications ol.bibliography li .author > em {
+  border-bottom: none !important;
+}
+
+.publications ol.bibliography li .author a {
+  border-bottom: none !important;
+}
+
+.publications ol.bibliography li .links a.btn {
+  border: none !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  padding-top: 0.15rem !important;
+  padding-bottom: 0.15rem !important;
+  color: var(--temp-accent-blue) !important;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.35rem;
+
+  &:hover {
+    border: none !important;
+    color: var(--temp-accent-blue) !important;
+  }
+}
