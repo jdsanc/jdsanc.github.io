@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-emerald: var(--accent-emerald);
+  --color-accent-pink: var(--accent-pink);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-surface: var(--surface);
+  --color-background: var(--background);
+  --color-outline-variant: var(--outline-variant);
+  --color-surface-container-low: var(--surface-container-low);
+
+  --font-headline: "Newsreader", serif;
+  --font-body: "Inter", sans-serif;
+  --font-label: "Inter", sans-serif;
+}
+
+@layer base {
+  :root {
+    --primary: #111111;
+    --secondary: #666666;
+    --accent-blue: #005a9c;
+    --accent-emerald: #0d7a6a;
+    --accent-pink: #e88a85;
+    --on-surface-variant: #444444;
+    --surface: #ffffff;
+    --background: #ffffff;
+    --outline-variant: #eeeeee;
+    --surface-container-low: #fafafa;
+  }
+
+  .dark {
+    --primary: #f3f4f6;
+    --secondary: #9ca3af;
+    --accent-blue: #60a5fa;
+    --accent-emerald: #34d399;
+    --accent-pink: #fb7185;
+    --on-surface-variant: #d1d5db;
+    --surface: #111827;
+    --background: #111827;
+    --outline-variant: #374151;
+    --surface-container-low: #1f2937;
+  }
+
+  body {
+    @apply bg-surface text-primary font-body selection:bg-accent-blue/10 selection:text-accent-blue;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
