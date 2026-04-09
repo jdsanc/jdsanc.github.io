@@ -1,6 +1,6 @@
-<<<<<<< HEAD
 _site
 .bundle
+.DS_Store
 .DS_store
 .idea
 .jekyll-cache
@@ -11,16 +11,10 @@ _site
 .venv
 assets/libs/
 assets/rendercv/rendercv_output/*.typ
+build/
+coverage/
+dist/
 Gemfile.lock
 node_modules/
 vendor
-=======
-node_modules/
-build/
-dist/
-coverage/
-.DS_Store
 *.log
-.env*
-!.env.example
->>>>>>> c8f6563e5f070167c6edb34ca6346fe7d06d3949
