@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Run Jekyll with File.exists? compatibility for Ruby 3.2+ (jekyll-scholar 5.x).
+# The github-pages gem forces safe mode and a dummy plugins_dir, so _plugins/*.rb cannot fix this.
+set -euo pipefail
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+export RUBYOPT="${RUBYOPT:+$RUBYOPT }-I${ROOT}/lib -rfile_exists_compat"
+exec bundle exec jekyll "$@"

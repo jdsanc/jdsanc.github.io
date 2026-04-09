@@ -89,6 +89,9 @@ jobs:
           propertyPath: "giscus.repo"
           value: ${{ github.repository }}
       - name: Install and Build 🔧
+        env:
+          # Ruby 3.2+ removed File.exists?; jekyll-scholar 5.x (via github-pages) still calls it.
+          RUBYOPT: "-I${{ github.workspace }}/lib -rfile_exists_compat"
         run: |
           sudo apt-get update && sudo apt-get install -y imagemagick
           pip3 install --upgrade nbconvert

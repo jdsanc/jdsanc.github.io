@@ -27,6 +27,8 @@ jobs:
           cache: "pip"
 
       - name: Build the site 🔧
+        env:
+          RUBYOPT: "-I${{ github.workspace }}/lib -rfile_exists_compat"
         run: |
           sudo apt-get update && sudo apt-get install -y imagemagick
           pip3 install --upgrade nbconvert
