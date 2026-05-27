@@ -1,60 +1,41 @@
-$(document).ready(function () {
-  // add toggle functionality to abstract, award and bibtex buttons
-  $("a.abstract").click(function () {
-    $(this).parent().parent().find(".abstract.hidden").toggleClass("open");
-    $(this).parent().parent().find(".award.hidden.open").toggleClass("open");
-    $(this).parent().parent().find(".bibtex.hidden.open").toggleClass("open");
-  });
-  $("a.award").click(function () {
-    $(this).parent().parent().find(".abstract.hidden.open").toggleClass("open");
-    $(this).parent().parent().find(".award.hidden").toggleClass("open");
-    $(this).parent().parent().find(".bibtex.hidden.open").toggleClass("open");
-  });
-  $("a.bibtex").click(function () {
-    $(this).parent().parent().find(".abstract.hidden.open").toggleClass("open");
-    $(this).parent().parent().find(".award.hidden.open").toggleClass("open");
-    $(this).parent().parent().find(".bibtex.hidden").toggleClass("open");
-  });
-  $("a").removeClass("waves-effect waves-light");
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll("a.abstract, a.award, a.bibtex").forEach(function (toggle) {
+    toggle.addEventListener("click", function (event) {
+      event.preventDefault();
+      const publication = toggle.closest("li, .publication");
+      if (!publication) return;
 
-  // bootstrap-toc
-  if ($("#toc-sidebar").length) {
-    // remove related publications years from the TOC
-    $(".publications h2").each(function () {
-      $(this).attr("data-toc-skip", "");
+      ["abstract", "award", "bibtex"].forEach(function (kind) {
+        publication.querySelectorAll("." + kind + ".hidden").forEach(function (section) {
+          section.classList.toggle("open", toggle.classList.contains(kind));
+        });
+      });
     });
-    var navSelector = "#toc-sidebar";
-    var $myNav = $(navSelector);
-    Toc.init($myNav);
-    $("body").scrollspy({
-      target: navSelector,
-      offset: 100,
+  });
+
+  document.querySelectorAll("a").forEach(function (link) {
+    link.classList.remove("waves-effect", "waves-light");
+  });
+
+  const navbarToggle = document.querySelector(".navbar-toggler");
+  const navbarNav = document.querySelector("#navbarNav");
+  if (navbarToggle && navbarNav) {
+    navbarToggle.addEventListener("click", function () {
+      const expanded = navbarToggle.getAttribute("aria-expanded") === "true";
+      navbarToggle.setAttribute("aria-expanded", String(!expanded));
+      navbarToggle.classList.toggle("collapsed", expanded);
+      navbarNav.classList.toggle("show", !expanded);
     });
   }
 
-  // add css to jupyter notebooks
-  const cssLink = document.createElement("link");
-  cssLink.href = "../css/jupyter.css";
-  cssLink.rel = "stylesheet";
-  cssLink.type = "text/css";
+  document.querySelectorAll("[data-contact-user][data-contact-domain][data-contact-tld]").forEach(function (control) {
+    control.addEventListener("click", function () {
+      const user = control.getAttribute("data-contact-user");
+      const domain = control.getAttribute("data-contact-domain");
+      const tld = control.getAttribute("data-contact-tld");
+      const address = user + "@" + domain + "." + tld;
 
-  let jupyterTheme = determineComputedTheme();
-
-  $(".jupyter-notebook-iframe-container iframe").each(function () {
-    $(this).contents().find("head").append(cssLink);
-
-    if (jupyterTheme == "dark") {
-      $(this).bind("load", function () {
-        $(this).contents().find("body").attr({
-          "data-jp-theme-light": "false",
-          "data-jp-theme-name": "JupyterLab Dark",
-        });
-      });
-    }
-  });
-
-  // trigger popovers
-  $('[data-toggle="popover"]').popover({
-    trigger: "hover",
+      window.location.href = "mailto:" + address;
+    });
   });
 });

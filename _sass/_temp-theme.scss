@@ -1,18 +1,75 @@
 /*******************************************************************************
- * Minimal surface + accessible contrast. Accent color for hierarchy & links only.
+ * Quiet personal system: paper texture, grayscale, generous but useful space.
  ******************************************************************************/
 
-// --- Typography ---
+:root {
+  --temp-ink: #111111;
+  --temp-text: #242424;
+  --temp-muted: #3a3834;
+  --temp-faint: #3a3834;
+  --temp-paper: #fbfaf7;
+  --temp-line: rgba(17, 17, 17, 0.15);
+
+  --global-bg-color: var(--temp-paper);
+  --global-text-color: var(--temp-text);
+  --global-text-color-light: var(--temp-muted);
+  --global-theme-color: var(--temp-ink);
+  --global-hover-color: var(--temp-ink);
+  --global-hover-text-color: #ffffff;
+  --global-divider-color: var(--temp-line);
+  --global-card-bg-color: transparent;
+  --global-code-bg-color: rgba(17, 17, 17, 0.045);
+  --global-footer-bg-color: transparent;
+  --global-footer-text-color: var(--temp-muted);
+  --global-footer-link-color: var(--temp-ink);
+  --global-highlight-color: rgba(17, 17, 17, 0.08);
+}
+
+html[data-theme="dark"] {
+  --temp-ink: #f4f1e9;
+  --temp-text: #e8e2d8;
+  --temp-muted: #d8d0c5;
+  --temp-faint: #c3baae;
+  --temp-paper: #141412;
+  --temp-line: rgba(244, 241, 233, 0.18);
+
+  --global-bg-color: var(--temp-paper);
+  --global-text-color: var(--temp-text);
+  --global-text-color-light: var(--temp-muted);
+  --global-theme-color: var(--temp-ink);
+  --global-hover-color: var(--temp-ink);
+  --global-code-bg-color: rgba(244, 241, 233, 0.06);
+  --global-footer-bg-color: transparent;
+  --global-footer-text-color: var(--temp-muted);
+  --global-footer-link-color: var(--temp-ink);
+}
+
 body {
+  color: var(--temp-text);
   font-family:
-    "Inter",
+    "Avenir Next",
+    avenir,
     -apple-system,
     blinkmacsystemfont,
     "Segoe UI",
-    roboto,
     sans-serif;
+  background:
+    radial-gradient(circle at 50% 14%, #ffffff 0 11rem, rgba(251, 250, 247, 0.76) 34rem, rgba(17, 17, 17, 0.04) 100%),
+    radial-gradient(circle at 50% 28%, rgba(17, 17, 17, 0.036) 0 0.7px, transparent 0.9px),
+    radial-gradient(circle at 18% 24%, rgba(17, 17, 17, 0.022) 0 1px, transparent 1px),
+    var(--temp-paper);
+  background-size: auto, 11px 11px, 29px 29px, auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html[data-theme="dark"] body {
+  background:
+    radial-gradient(circle at 50% 14%, rgba(244, 241, 233, 0.055) 0 12rem, rgba(20, 20, 18, 0.72) 34rem, rgba(244, 241, 233, 0.035) 100%),
+    radial-gradient(circle at 50% 28%, rgba(244, 241, 233, 0.035) 0 0.7px, transparent 0.9px),
+    radial-gradient(circle at 18% 24%, rgba(244, 241, 233, 0.026) 0 1px, transparent 1px),
+    var(--temp-paper);
+  background-size: auto, 11px 11px, 29px 29px, auto;
 }
 
 h1,
@@ -21,619 +78,541 @@ h3,
 .post-title,
 .landing-title,
 .temp-panel-heading {
-  font-family: "Newsreader", georgia, "Times New Roman", serif;
+  color: var(--temp-ink);
+  font-family: georgia, "Iowan Old Style", "Times New Roman", serif;
+  letter-spacing: -0.01em;
 }
 
-// --- Palette: match reference app (zip / index.css) ---
-:root {
-  --temp-primary: #111111;
-  --temp-secondary: #666666;
-  --temp-muted: #444444;
-  --temp-accent-blue: #005a9c;
-  --temp-accent-emerald: #0d7a6a;
-  --temp-accent-pink: #e88a85;
-  --temp-surface: #ffffff;
-  --temp-outline: #eeeeee;
-  --temp-surface-low: #fafafa;
-
-  --global-bg-color: var(--temp-surface);
-  --global-text-color: var(--temp-primary);
-  --global-text-color-light: var(--temp-muted);
-  --global-theme-color: var(--temp-accent-blue);
-  --global-hover-color: #004a80;
-  --global-hover-text-color: #ffffff;
-  --global-divider-color: var(--temp-outline);
-  --global-card-bg-color: transparent;
-  --global-code-bg-color: rgba(0, 90, 156, 0.07);
-  --global-footer-bg-color: var(--temp-surface);
-  --global-footer-text-color: var(--temp-secondary);
-  --global-footer-link-color: var(--temp-accent-blue);
-  --global-distill-app-color: var(--temp-secondary);
-  --global-highlight-color: var(--temp-accent-pink);
+a {
+  color: var(--temp-ink);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
 }
 
-// --- Dark: match reference app .dark tokens ---
-html[data-theme="dark"] {
-  --temp-primary: #f3f4f6;
-  --temp-secondary: #9ca3af;
-  --temp-muted: #d1d5db;
-  --temp-accent-blue: #60a5fa;
-  --temp-accent-emerald: #34d399;
-  --temp-accent-pink: #fb7185;
-  --temp-surface: #111827;
-  --temp-outline: #374151;
-  --temp-surface-low: #1f2937;
-
-  --global-bg-color: var(--temp-surface);
-  --global-text-color: var(--temp-primary);
-  --global-text-color-light: var(--temp-muted);
-  --global-hover-color: #93c5fd;
-  --global-card-bg-color: transparent;
-  --global-code-bg-color: rgba(124, 180, 252, 0.1);
-  --global-footer-bg-color: var(--temp-surface);
-  --global-footer-text-color: var(--temp-secondary);
-  --global-footer-link-color: var(--temp-accent-blue);
+a:hover {
+  color: var(--temp-ink);
+  text-decoration-thickness: 2px;
 }
 
 ::selection {
-  background: rgba(0, 90, 156, 0.1);
-  color: var(--temp-accent-blue);
+  background: rgba(17, 17, 17, 0.1);
 }
 
-html[data-theme="dark"] ::selection {
-  background: rgba(96, 165, 250, 0.18);
-  color: var(--temp-primary);
-}
-
-// --- Focus: visible keyboard paths (hide outline on click) ---
 a:focus-visible,
 button:focus-visible,
-#light-toggle:focus-visible,
-#search-toggle:focus-visible {
-  outline: 2px solid var(--temp-accent-blue);
-  outline-offset: 2px;
+#light-toggle:focus-visible {
+  outline: 2px solid var(--temp-ink);
+  outline-offset: 3px;
 }
 
-html[data-theme="dark"] a:focus-visible,
-html[data-theme="dark"] button:focus-visible,
-html[data-theme="dark"] #light-toggle:focus-visible,
-html[data-theme="dark"] #search-toggle:focus-visible {
-  outline-color: var(--temp-accent-blue);
-}
-
-// --- Inline accents ---
-.temp-hl-blue {
-  color: var(--temp-accent-blue);
-}
-
-.temp-hl-emerald {
-  color: var(--temp-accent-emerald);
-}
-
-.temp-hl-pink {
-  color: var(--temp-accent-pink);
-}
-
-// --- Publication tags: solid pills, white label (reference layout) ---
-.pub-title-row {
-  gap: 0.75rem 1rem;
-  width: 100%;
-}
-
-@media (min-width: 576px) {
-  .pub-title-row {
-    align-items: center;
-  }
-}
-
-.pub-tag {
-  display: inline-block;
-  font-family: "Inter", sans-serif;
-  font-size: 0.625rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 0.42rem 0.75rem;
-  border-radius: 0.25rem;
-  line-height: 1.2;
-  flex-shrink: 0;
-  color: #ffffff;
-}
-
-// Reference app: emerald journal, pink conference, blue thesis/book
-.pub-tag--article {
-  background: var(--temp-accent-emerald);
-}
-
-.pub-tag--inproceedings,
-.pub-tag--incollection {
-  background: var(--temp-accent-pink);
-}
-
-.pub-tag--phdthesis,
-.pub-tag--mastersthesis,
-.pub-tag--book {
-  background: var(--temp-accent-blue);
-}
-
-html[data-theme="dark"] .pub-tag--article {
-  background: var(--temp-accent-emerald);
-}
-
-html[data-theme="dark"] .pub-tag--inproceedings,
-html[data-theme="dark"] .pub-tag--incollection {
-  background: var(--temp-accent-pink);
-}
-
-html[data-theme="dark"] .pub-tag--phdthesis,
-html[data-theme="dark"] .pub-tag--mastersthesis,
-html[data-theme="dark"] .pub-tag--book {
-  background: var(--temp-accent-blue);
-}
-
-// --- Navbar: one line, no extra chrome ---
 #navbar.navbar {
-  backdrop-filter: blur(12px);
-  background-color: color-mix(in srgb, var(--temp-surface) 92%, transparent) !important;
-  border-bottom: 1px solid var(--temp-outline) !important;
+  background-color: color-mix(in srgb, var(--temp-paper) 88%, transparent) !important;
+  border-bottom: 0 !important;
   box-shadow: none !important;
+  backdrop-filter: blur(10px);
 }
 
-#navbar .navbar-nav .nav-link {
-  font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--temp-secondary) !important;
-
-  &:hover {
-    color: var(--temp-accent-blue) !important;
-  }
-}
-
-#navbar .navbar-nav .nav-item.active > .nav-link {
-  color: var(--temp-primary) !important;
-  border-bottom: 1px solid var(--temp-accent-blue);
-  padding-bottom: 0.25rem;
+#navbar .container {
+  border-bottom: 1px solid var(--temp-line);
 }
 
 #navbar .navbar-brand.title {
-  font-family: "Newsreader", georgia, serif;
-  letter-spacing: 0.02em;
-  color: var(--temp-primary);
+  color: var(--temp-ink);
+  display: none;
+  font-family: georgia, "Iowan Old Style", serif;
+  font-size: 1rem;
 }
 
-// --- Landing hero (reference ~mb-32 rhythm, gap-16 between columns) ---
-.landing-page .landing-hero {
-  margin-bottom: 5rem;
-}
-
-.landing-page .landing-hero.row {
-  --bs-gutter-x: 2rem;
-
-  @media (min-width: 992px) {
-    --bs-gutter-x: 4rem;
-  }
-}
-
-.landing-page .landing-title {
-  font-size: clamp(2.75rem, 6vw, 3.75rem);
-  line-height: 1.12;
-  margin-bottom: 2rem;
-  color: var(--temp-primary);
-}
-
-.landing-page .landing-tagline {
-  font-family: "Newsreader", georgia, serif;
-  font-size: 1.5rem;
-  font-style: italic;
-  line-height: 1.6;
-  color: var(--temp-muted);
-  max-width: 42rem;
-  margin-bottom: 2.5rem;
-
-  a {
-    color: var(--temp-accent-blue);
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.15em;
-    font-weight: 600;
-
-    &:hover {
-      text-decoration-thickness: 2px;
-    }
-  }
-}
-
-.landing-page .landing-prose {
-  font-size: 1.125rem;
-  line-height: 1.75;
-  color: var(--temp-muted);
-
-  p {
-    margin-bottom: 1.5rem;
-  }
-}
-
-.landing-page .landing-cta-link {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--temp-primary);
-  text-decoration: none;
-  border-bottom: 2px solid var(--temp-primary);
-  padding-bottom: 0.2rem;
-  transition:
-    color 0.15s ease,
-    border-color 0.15s ease;
-
-  &:hover {
-    color: var(--temp-accent-blue);
-    border-bottom-color: var(--temp-accent-blue);
-  }
-}
-
-.landing-page .landing-profile {
-  max-width: 22rem;
-  margin-left: auto;
-}
-
-.landing-page .landing-profile figure {
-  position: relative;
-}
-
-.landing-page .landing-profile figure::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 4px;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-  background: var(--temp-accent-blue);
-}
-
-.landing-page .landing-profile:hover figure::after {
-  opacity: 0.05;
-}
-
-.landing-page .landing-profile img,
-.landing-page .landing-profile picture img {
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  object-position: 50% 38%;
-  box-shadow: 0 1px 2px rgb(0 0 0 / 6%);
-}
-
-.landing-page .landing-profile-meta {
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--temp-secondary);
-  letter-spacing: -0.01em;
-
-  p {
-    margin-bottom: 0.35rem;
-    padding-left: 0.15rem;
-  }
-}
-
-// --- Latest updates: tinted panel + radius (reference LatestUpdates) ---
-.landing-page .temp-panel--updates {
-  margin: 3rem 0 5rem;
-  padding: 4rem 1.5rem;
-  border: none;
-  background: rgba(0, 90, 156, 0.02);
-  border-radius: 0.75rem;
-}
-
-html[data-theme="dark"] .landing-page .temp-panel--updates {
-  background: rgba(96, 165, 250, 0.04);
-}
-
-.landing-page .temp-panel-heading {
-  font-size: 1.875rem;
-  line-height: 1.25;
-  margin-bottom: 3rem;
-  padding-left: 0.5rem;
-  border-left: 4px solid var(--temp-accent-blue);
-  color: var(--temp-primary);
-
-  a {
-    color: inherit;
-    text-decoration: none;
-
-    &:hover {
-      color: var(--temp-accent-blue);
-    }
-  }
-}
-
-.landing-page .temp-panel--updates .news table {
-  width: 100%;
-}
-
-.landing-page .temp-panel--updates .news table tbody tr:not(:first-child) th,
-.landing-page .temp-panel--updates .news table tbody tr:not(:first-child) td {
-  padding-top: 1.75rem;
-  border-top: 1px solid var(--temp-outline);
-}
-
-.landing-page .temp-panel--updates .news th {
-  color: var(--temp-accent-blue);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  vertical-align: top;
-  width: 28%;
-  font-family: "Inter", sans-serif;
-}
-
-.landing-page .temp-panel--updates .news td {
-  color: var(--temp-muted);
-  line-height: 1.65;
-}
-
-.landing-page .temp-panel--updates .news a.news-title {
-  font-weight: 700;
-  font-size: 1.125rem;
-  color: var(--temp-primary);
-  text-decoration: none;
-  transition: color 0.15s ease;
-
-  &:hover {
-    color: var(--temp-accent-blue);
-  }
-}
-
-// --- Selected publications header ---
-.landing-page .temp-panel-header {
-  margin-bottom: 4rem;
-  gap: 1rem;
-  padding-top: 2.5rem;
-  border-top: 1px solid var(--temp-outline);
-}
-
-.landing-page .temp-panel--papers .temp-panel-heading {
-  border-left: 4px solid var(--temp-accent-blue);
-  padding-left: 0.5rem;
-  margin-bottom: 0;
-}
-
-.landing-page .temp-biblio-link {
-  font-size: 0.75rem;
+#navbar .navbar-nav .nav-link {
+  color: var(--temp-muted) !important;
+  font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--temp-accent-blue);
-  text-decoration: none;
-  white-space: nowrap;
-  transition: opacity 0.15s ease;
-
-  &:hover {
-    opacity: 0.7;
-    text-decoration: none;
-  }
 }
 
-// --- Publications list: hairline separators, no nested cards ---
+#navbar .navbar-nav .nav-link:hover,
+#navbar .navbar-nav .nav-item.active > .nav-link {
+  color: var(--temp-ink) !important;
+  text-decoration: none;
+}
+
+#navbar .navbar-nav .nav-item.active > .nav-link {
+  border-bottom: 1px solid var(--temp-ink);
+}
+
+#light-toggle {
+  color: var(--temp-muted);
+}
+
+.container[role="main"] {
+  margin-top: 6rem !important;
+}
+
+.temp-biblio-link {
+  color: var(--temp-muted);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.temp-biblio-link:hover {
+  color: var(--temp-ink);
+  text-decoration: none;
+}
+
 .publications ol.bibliography {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0;
+  list-style: none;
+  margin: 0 0 3rem;
+  padding-left: 0;
 }
 
 .publications ol.bibliography > li {
-  margin: 0;
-  padding: 1.5rem 0;
-  border: none;
-  border-radius: 0;
   background: transparent;
-  border-bottom: 1px solid var(--temp-outline);
-
-  &:last-child {
-    border-bottom: none;
-  }
+  border: 0;
+  border-bottom: 1px solid var(--temp-line);
+  border-radius: 0;
+  margin: 0;
+  padding: 2.1rem 0 4.75rem;
 }
 
-.landing-page .publications ol.bibliography > li {
-  padding: 2.5rem 0;
-
-  &:first-child {
-    padding-top: 0;
-  }
-
-  &:last-child {
-    padding-bottom: 0;
-  }
+.publications ol.bibliography > li:last-child {
+  border-bottom: 0;
 }
 
 .publications .title {
-  font-family: "Inter", sans-serif;
-  font-size: 1.25rem;
-  font-weight: 700;
-  line-height: 1.3;
-  color: var(--temp-primary);
+  color: var(--temp-ink);
+  font-size: clamp(1.1rem, 1.8vw, 1.42rem);
+  font-weight: 760;
+  line-height: 1.25;
+  max-width: 31rem;
 }
 
-.publications .author {
+.publications .author,
+.publications .periodical {
   color: var(--temp-muted);
-  font-size: 0.9375rem;
-  font-weight: 400;
+  font-size: 0.95rem;
+  line-height: 1.55;
 }
 
 .publications .author em {
-  color: var(--temp-primary);
-  font-weight: 700;
+  color: var(--temp-ink);
   font-style: normal;
-  border-bottom: none !important;
+  font-weight: 750;
 }
 
-.publications .author a {
-  color: var(--temp-secondary);
-  border-bottom: none !important;
-  text-decoration: none;
-
-  &:hover {
-    color: var(--temp-accent-blue);
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.15em;
-  }
-}
-
-.publications .periodical {
-  font-style: italic;
-  font-size: 0.9rem;
-  color: var(--temp-secondary);
-  margin-top: 0.35rem;
-}
-
-.publications .abbr abbr.badge {
-  border-radius: 0.35rem !important;
-  font-size: 0.625rem !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.08em;
+.pub-tag {
+  color: var(--temp-faint);
+  display: inline-block;
+  flex-shrink: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  padding-top: 0.25rem;
   text-transform: uppercase;
-  border: none !important;
-  padding: 0.35rem 0.5rem !important;
 }
 
 .publications .links {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 0.85rem 1.35rem;
-  margin-top: 0.85rem;
+  gap: 0.75rem 1.25rem;
+  margin-top: 0.9rem;
 }
 
 .publications .links a.btn {
-  border: none !important;
   background: transparent !important;
-  color: var(--temp-accent-blue) !important;
-  font-size: 0.6875rem !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.14em !important;
-  text-transform: uppercase !important;
-  padding: 0.15rem 0 !important;
+  border: 0 !important;
   box-shadow: none !important;
-  display: inline-flex !important;
-  align-items: center;
-  gap: 0.35rem;
-
-  &:hover {
-    text-decoration: underline !important;
-    text-underline-offset: 0.2em;
-    opacity: 0.9;
-  }
+  color: var(--temp-ink) !important;
+  font-size: 0.66rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.14em !important;
+  padding: 0 !important;
+  text-transform: uppercase !important;
 }
 
-.publications .links .pub-link-icon {
-  font-size: 0.75rem;
-  opacity: 0.95;
+.publications .links a.btn:hover {
+  color: var(--temp-muted) !important;
+  text-decoration: none !important;
 }
 
-.publications .bibtex-snippet {
-  font-size: 0.8125rem;
-  padding: 1rem 1.1rem;
-  background: var(--global-code-bg-color);
-  border-radius: 4px;
-  overflow-x: auto;
-  border: 1px solid var(--temp-outline);
-
-  code {
-    font-family: ui-monospace, "SF Mono", menlo, consolas, monospace;
-    white-space: pre-wrap;
-    word-break: break-word;
-    color: var(--temp-primary);
-  }
-}
-
-// Outer papers block: no second box (list handles rhythm)
-.landing-page .temp-panel--papers {
-  border: none;
-  border-radius: 0;
-  padding: 0;
-  margin: 0 0 5rem;
+.bibsearch-form-input {
   background: transparent;
-}
-
-.landing-page .temp-panel--papers .publications {
-  margin-top: 0;
-}
-
-// --- Contact: open layout ---
-.landing-page #contact.social {
-  border: none;
+  border: 0;
+  border-bottom: 1px solid var(--temp-line);
   border-radius: 0;
-  padding: 2.5rem 0 0;
-  margin-top: 0;
-  background: transparent;
-  border-top: 1px solid var(--temp-outline);
+  color: var(--temp-ink);
+  font-size: 1rem;
+  margin: 1.25rem 0 2.75rem;
+  padding: 0.75rem 0 0.9rem;
+  width: 100%;
 }
 
-.landing-page .social .contact-icons a {
-  color: var(--temp-secondary);
-
-  &:hover {
-    color: var(--temp-accent-blue);
-  }
+.bibsearch-form-input::placeholder {
+  color: var(--temp-faint);
+  opacity: 1;
 }
 
-// --- Projects: soft elevation, one border ---
-.projects .card {
-  border-radius: 0.5rem;
-  border: 1px solid var(--temp-outline);
-  overflow: hidden;
-  background: var(--temp-surface);
-  box-shadow: 0 1px 2px rgb(0 0 0 / 4%);
-}
-
-html[data-theme="dark"] .projects .card {
-  background: var(--temp-surface-low);
+.bibsearch-form-input:focus {
+  border-color: var(--temp-ink);
   box-shadow: none;
+  outline: none;
 }
 
-// --- Footer ---
+.post-header {
+  margin-bottom: 3rem;
+}
+
+.post-title {
+  font-size: clamp(2.6rem, 6vw, 4.6rem);
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 0.8rem;
+}
+
+.post-description {
+  color: var(--temp-muted);
+  font-size: 1rem;
+  max-width: 38rem;
+}
+
+.page-publications .container[role="main"] {
+  max-width: 980px;
+}
+
+.page-publications .post {
+  margin: 0 auto;
+  max-width: 700px;
+  padding: 5.25rem 0 4.75rem;
+}
+
+.page-publications .post-header {
+  margin-bottom: 3.75rem;
+}
+
+.page-publications .post-title {
+  font-size: clamp(3.2rem, 8vw, 5rem);
+  line-height: 0.98;
+  margin-bottom: 1rem;
+}
+
+.page-publications .post-description {
+  color: var(--temp-muted);
+  font-size: 1rem;
+}
+
+.page-publications article > p {
+  margin: 0;
+}
+
+.publications h2.bibliography {
+  color: var(--temp-ink);
+  font-family: georgia, "Iowan Old Style", "Times New Roman", serif;
+  font-size: clamp(1.75rem, 3vw, 2.35rem);
+  font-weight: 800;
+  line-height: 1;
+  margin: 0;
+}
+
+.publications .row {
+  display: grid;
+  gap: clamp(1rem, 4vw, 3rem);
+  grid-template-columns: minmax(0, 1fr);
+  margin: 0;
+}
+
+.publications .row > [class*="col"] {
+  flex: none;
+  max-width: none;
+  padding: 0;
+  width: auto;
+}
+
+.publications .pub-title-row {
+  align-items: start !important;
+  display: grid !important;
+  gap: 1rem 2rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  margin-bottom: 0.65rem !important;
+}
+
+.cv .card,
+.post .card {
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--temp-line);
+  border-radius: 0;
+  box-shadow: none;
+  padding: 1.4rem 0 !important;
+}
+
+.cv .card-title {
+  font-family: georgia, "Iowan Old Style", serif;
+  font-size: 1.45rem;
+  font-weight: 800;
+}
+
+.home-hub {
+  margin: 0 auto;
+  max-width: 980px;
+  padding: 6rem 0 5rem;
+}
+
+.home-hub-intro {
+  align-items: start;
+  display: grid;
+  gap: clamp(3rem, 10vw, 9rem);
+  grid-template-columns: minmax(0, 640px) 156px;
+  justify-content: space-between;
+}
+
+.home-hub-photo {
+  justify-self: end;
+  padding-top: 1.25rem;
+}
+
+.home-hub-photo figure {
+  margin: 0;
+}
+
+.home-hub-img {
+  border-radius: 999px !important;
+  box-shadow: 0 1px 2px rgba(17, 17, 17, 0.1);
+  height: 156px !important;
+  object-fit: cover;
+  object-position: 50% 38%;
+  width: 156px !important;
+}
+
+.home-hub-photo-caption {
+  color: var(--temp-faint);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  margin: 0.85rem 0 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.home-hub-kicker {
+  color: var(--temp-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.home-hub-header {
+  margin-top: 0.5rem;
+}
+
+.home-hub-title {
+  color: var(--temp-ink);
+  font-size: clamp(2.55rem, 7vw, 4rem);
+  font-weight: 800;
+  line-height: 0.98;
+  margin: 0 0 0.9rem;
+}
+
+.home-hub-subtitle {
+  color: var(--temp-text);
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 0.25rem;
+}
+
+.home-hub-advisor {
+  color: var(--temp-faint);
+  font-size: 0.95rem;
+  line-height: 1.45;
+  margin: 0 0 1.15rem;
+}
+
+.home-hub-body {
+  color: var(--temp-muted);
+  font-size: 1rem;
+  line-height: 1.75;
+  margin-bottom: 2rem;
+  max-width: 560px;
+}
+
+.home-hub-links {
+  border-bottom: 1px solid var(--temp-line);
+  border-top: 1px solid var(--temp-line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem 2rem;
+  margin: 2.5rem 0;
+  padding: 1rem 0;
+}
+
+.home-hub-links a {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  color: var(--temp-ink);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: inherit;
+  padding: 0;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.home-hub-links a:hover {
+  color: var(--temp-muted);
+}
+
+.home-hub-icon-links {
+  align-items: center;
+  display: flex;
+  gap: 1.15rem;
+  margin: -1rem 0 2.5rem;
+}
+
+.home-hub-icon-links a,
+.home-hub-icon-button {
+  align-items: center;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  color: var(--temp-faint);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: inherit;
+  font-size: 1.15rem;
+  height: 1.75rem;
+  justify-content: center;
+  padding: 0;
+  text-decoration: none;
+  width: 1.75rem;
+}
+
+.home-hub-icon-links a:hover,
+.home-hub-icon-button:hover {
+  color: var(--temp-ink);
+  text-decoration: none;
+}
+
+.home-hub-icon-button svg {
+  fill: none;
+  height: 1.05rem;
+  stroke: currentcolor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+  width: 1.05rem;
+}
+
+.home-hub-icon-links span {
+  font-size: 0.66rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 footer.fixed-bottom,
 footer.sticky-bottom {
-  border-top: 1px solid var(--temp-outline);
-  background-color: var(--global-footer-bg-color) !important;
+  background: transparent !important;
+  border-top: 0;
 }
 
 footer.fixed-bottom .container,
 footer.sticky-bottom .container {
-  color: var(--temp-secondary);
-  font-size: 0.75rem;
-  letter-spacing: 0.02em;
-  padding-top: 5rem !important;
+  border-top: 1px solid var(--temp-line);
+  color: var(--temp-muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
   padding-bottom: 3rem !important;
-  opacity: 0.92;
+  padding-top: 3rem !important;
+  text-align: center;
 }
 
-footer.fixed-bottom a,
-footer.sticky-bottom a {
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
+footer a {
+  color: var(--temp-muted);
+  font-weight: 800;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgb(102 102 102 / 0.65);
-
-  &:hover {
-    color: var(--temp-accent-blue);
-    text-decoration: none;
-    opacity: 1;
-  }
 }
 
-html[data-theme="dark"] footer.fixed-bottom a,
-html[data-theme="dark"] footer.sticky-bottom a {
-  color: rgb(156 163 175 / 0.65);
+footer a:hover {
+  color: var(--temp-ink);
+  text-decoration: none;
+}
 
-  &:hover {
-    color: var(--temp-accent-blue);
+#back-to-top {
+  background: #5f5d58 !important;
+  box-shadow: 0 2px 8px rgba(17, 17, 17, 0.16) !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .home-hub-advisor,
+html[data-theme="dark"] .home-hub-photo-caption,
+html[data-theme="dark"] .home-hub-icon-links a,
+html[data-theme="dark"] .home-hub-icon-button {
+  color: #b0a79c;
+}
+
+html[data-theme="dark"] .home-hub-body {
+  color: #d0c7bb;
+}
+
+html[data-theme="dark"] #back-to-top {
+  background: #8d887f !important;
+  color: #111111 !important;
+}
+
+@media (max-width: 767.98px) {
+  .container[role="main"] {
+    margin-top: 4.5rem !important;
+  }
+
+  .home-hub {
+    padding: 3rem 0 4rem;
+  }
+
+  .home-hub-intro {
+    gap: 1.75rem;
+    grid-template-columns: 1fr;
+  }
+
+  .home-hub-photo {
+    justify-self: end;
+    order: 0;
+    padding-top: 0;
+  }
+
+  .home-hub-img {
+    height: 96px !important;
+    width: 96px !important;
+  }
+
+  .home-hub-photo-caption {
+    text-align: right;
+  }
+
+  .page-publications .post {
+    padding: 3rem 0 4rem;
+  }
+
+  .page-publications .post-title {
+    font-size: clamp(3rem, 16vw, 4.2rem);
+  }
+
+  .publications .pub-title-row {
+    grid-template-columns: 1fr;
+  }
+
+  .pub-tag {
+    padding-top: 0;
   }
 }

@@ -1,95 +1,73 @@
 ---
 layout: default
 ---
-<div class="post landing-page">
-  <div class="row landing-hero align-items-start">
-    <div class="col-lg-7">
-      <header class="landing-header">
-        <h1 class="post-title landing-title">
+<div class="home-hub">
+  <div class="home-hub-intro">
+    <div class="home-hub-copy">
+      <header class="home-hub-header">
+        <h1 class="home-hub-title">
           {% if site.title == 'blank' %}
-            <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
-            {{ site.last_name }}
+            {{ site.first_name }} {{ site.middle_name }} {{ site.last_name }}
           {% else %}
             {{ site.title }}
           {% endif %}
         </h1>
-        <p class="desc landing-tagline">{{ page.subtitle }}</p>
+        <p class="home-hub-subtitle">{{ page.subtitle }}</p>
+        <p class="home-hub-advisor">Advisor: Rafael Gomez-Bombarelli</p>
       </header>
 
-      <div class="landing-body landing-prose clearfix">{{ content }}</div>
-
-      <div class="landing-cta mt-4 mb-5 d-flex flex-wrap align-items-center" style="gap: 2rem;">
-        <a class="landing-cta-link" href="{{ '/cv/' | relative_url }}">Download CV</a>
-        <a class="landing-cta-link" href="#contact">Get in Touch</a>
+      <div class="home-hub-body">
+        {{ content }}
       </div>
     </div>
 
-    <div class="col-lg-5 mt-4 mt-lg-0">
-      {% if page.profile %}
-        <div class="landing-profile">
-          {% if page.profile.image %}
-            {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
-            {% if page.profile.image_circular %}
-              {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle landing-profile-img' %}
-            {% else %}
-              {% assign profile_image_class = 'img-fluid z-depth-1 rounded landing-profile-img' %}
-            {% endif %}
-            {% capture sizes %}(min-width: 992px) 400px, 95vw{% endcapture %}
-            {%
-              include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
-              cache_bust=true
-            %}
-          {% endif %}
-          {% if page.profile.more_info %}
-            <div class="landing-profile-meta more-info">{{ page.profile.more_info }}</div>
-          {% endif %}
-        </div>
-      {% endif %}
-    </div>
+    {% if page.profile and page.profile.image %}
+      {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
+      <div class="home-hub-photo">
+        {%
+          include figure.liquid
+          loading="eager"
+          path=profile_image_path
+          class="home-hub-img"
+          sizes="136px"
+          alt=page.profile.image
+          cache_bust=true
+        %}
+        <p class="home-hub-photo-caption">Cambridge, MA</p>
+      </div>
+    {% endif %}
   </div>
 
-  <article>
-    {% if page.announcements and page.announcements.enabled %}
-      <div class="temp-panel temp-panel--updates">
-        <h2 class="temp-panel-heading">
-          <a href="{{ '/news/' | relative_url }}">Latest Updates</a>
-        </h2>
-        {% include news.liquid limit=true %}
-      </div>
-    {% endif %}
+  <nav class="home-hub-links" aria-label="Primary links">
+    <a href="{{ '/cv/' | relative_url }}">CV</a>
+    <a href="{{ '/publications/' | relative_url }}">Publications</a>
+  </nav>
 
-    {% if page.latest_posts and page.latest_posts.enabled %}
-      <h2>
-        <a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
-      </h2>
-      {% include latest_posts.liquid %}
-    {% endif %}
-
-    {% if page.selected_papers %}
-      {% capture _selected_bib %}
-        {% bibliography --group_by none --query @*[selected=true]* %}
-      {% endcapture %}
-      {% if _selected_bib contains '<li' %}
-        <div class="temp-panel temp-panel--papers">
-          <div class="temp-panel-header d-flex flex-wrap justify-content-between align-items-baseline">
-            <h2 class="temp-panel-heading">Selected Publications</h2>
-            <a class="temp-biblio-link" href="{{ '/publications/' | relative_url }}">Full bibliography →</a>
-          </div>
-          <div class="publications">{{ _selected_bib }}</div>
-        </div>
-      {% endif %}
-    {% endif %}
-
-    {% if page.social %}
-      <div id="contact" class="social">
-        <div class="contact-icons">{% social_links %}</div>
-
-        <div class="contact-note">{{ site.contact_note }}</div>
-      </div>
-    {% endif %}
-
-    {% if site.newsletter and site.newsletter.enabled and site.footer_fixed %}
-      {% include newsletter.liquid center=true %}
-    {% endif %}
-  </article>
+  <nav class="home-hub-icon-links" aria-label="Profile links">
+    <button
+      class="home-hub-icon-button"
+      type="button"
+      data-contact-user="sdiazjes"
+      data-contact-domain="gmail"
+      data-contact-tld="com"
+      aria-label="Email"
+    >
+      <svg aria-hidden="true" viewBox="0 0 24 24">
+        <path d="M4.75 6.75h14.5v10.5H4.75z" />
+        <path d="m5.25 7.25 6.75 5.6 6.75-5.6" />
+      </svg>
+    </button>
+    <a href="https://github.com/{{ site.data.socials.github_username }}" aria-label="GitHub">
+      <i class="si si-github" aria-hidden="true"></i>
+    </a>
+    <a href="https://www.linkedin.com/in/{{ site.data.socials.linkedin_username }}" aria-label="LinkedIn">
+      <i class="si si-linkedin" aria-hidden="true"></i>
+    </a>
+    <a href="https://scholar.google.com/citations?user={{ site.data.socials.scholar_userid }}" aria-label="Google Scholar">
+      <i class="si si-google-scholar" aria-hidden="true"></i>
+    </a>
+    <a href="{{ site.data.socials.lab_url }}" aria-label="{{ site.data.socials.lab_name }}">
+      <span aria-hidden="true">Lab</span>
+    </a>
+  </nav>
 </div>

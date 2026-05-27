@@ -1,7 +1,6 @@
 cv:
   name: Jesus Diaz Sanchez
-  label: Ph.D. Student · Theoretical & Computational Chemistry
-  email: sdiazjes@gmail.com
+  label: Ph.D. Researcher at MIT
   location: Cambridge, MA
 
   summary: >
@@ -19,7 +18,7 @@ cv:
       - institution: Massachusetts Institute of Technology
         location: Cambridge, MA
         url: https://chemistry.mit.edu/
-        area: Theoretical and Computational Chemistry
+        area: Chemical reasoning from disparate data streams
         studyType: PhD
         start_date: 2024
         end_date: 2029
