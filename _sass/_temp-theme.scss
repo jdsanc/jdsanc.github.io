@@ -54,11 +54,8 @@ body {
     "Segoe UI",
     sans-serif;
   background:
-    radial-gradient(circle at 50% 14%, #ffffff 0 11rem, rgba(251, 250, 247, 0.76) 34rem, rgba(17, 17, 17, 0.04) 100%),
-    radial-gradient(circle at 50% 28%, rgba(17, 17, 17, 0.036) 0 0.7px, transparent 0.9px),
-    radial-gradient(circle at 18% 24%, rgba(17, 17, 17, 0.022) 0 1px, transparent 1px),
+    url("../img/paper-radial.svg") center top / cover fixed,
     var(--temp-paper);
-  background-size: auto, 11px 11px, 29px 29px, auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -443,13 +440,11 @@ button:focus-visible,
 }
 
 .home-hub-links {
-  border-bottom: 1px solid var(--temp-line);
-  border-top: 1px solid var(--temp-line);
   display: flex;
   flex-wrap: wrap;
   gap: 1.25rem 2rem;
-  margin: 2.5rem 0;
-  padding: 1rem 0;
+  margin: 3rem 0 1.55rem;
+  padding: 0;
 }
 
 .home-hub-links a {
@@ -476,7 +471,7 @@ button:focus-visible,
   align-items: center;
   display: flex;
   gap: 1.15rem;
-  margin: -1rem 0 2.5rem;
+  margin: 0 0 2.5rem;
 }
 
 .home-hub-icon-links a,
@@ -528,12 +523,15 @@ footer.sticky-bottom {
 
 footer.fixed-bottom .container,
 footer.sticky-bottom .container {
-  border-top: 1px solid var(--temp-line);
+  align-items: center;
+  border-top: 0;
   color: var(--temp-muted);
+  display: flex;
   font-size: 0.72rem;
+  justify-content: center;
   letter-spacing: 0.04em;
   padding-bottom: 3rem !important;
-  padding-top: 3rem !important;
+  padding-top: 2rem !important;
   text-align: center;
 }
 
