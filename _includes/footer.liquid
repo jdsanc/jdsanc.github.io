@@ -1,5 +1,8 @@
 {% capture footer_contents -%}
-  &copy; Copyright {{ site.time | date: '%Y' }} {{ site.first_name }}{% if site.middle_name %} {{ site.middle_name }}{% endif %} {{ site.last_name }}. {{ site.footer_text | strip }}
+  &copy; Copyright {{ site.time | date: '%Y' }} {{ site.first_name }}{% if site.middle_name %} {{ site.middle_name }}{% endif %} {{ site.last_name }}.
+  {% if site.footer_text %}
+    {{ site.footer_text | strip }}
+  {% endif %}
   {% if site.impressum_path %}
     <a href="{{ site.url }}{{ site.baseurl }}{{ site.impressum_path }}">Impressum</a>.
   {% endif %}

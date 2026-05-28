@@ -8,9 +8,7 @@ contact_note: >
 description: >
   Jesus Diaz Sanchez - Ph.D. researcher at MIT. Interested in making sense of
   disparate chemical data streams for chemical reasoning.
-footer_text: >
-  <a href="https://github.com/jdsanc/jdsanc.github.io" target="_blank" rel="noopener">Source</a> ·
-  <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a>
+footer_text:
 keywords: Jesus Diaz Sanchez, MIT, computational chemistry, chemical informatics, machine learning, spectroscopy, molecular dynamics
 lang: en
 icon:
