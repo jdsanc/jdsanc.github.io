@@ -439,22 +439,23 @@ button:focus-visible,
   max-width: 560px;
 }
 
-.home-hub-links {
+.home-hub-actions {
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: 1.25rem 2rem;
-  margin: 3rem 0 1.55rem;
+  gap: 1.2rem clamp(1.7rem, 4vw, 3.1rem);
+  margin: 3.25rem 0 3rem;
   padding: 0;
 }
 
-.home-hub-links a {
+.home-hub-actions a {
   appearance: none;
   background: transparent;
   border: 0;
-  color: var(--temp-ink);
+  color: var(--temp-faint);
   cursor: pointer;
   font-family: inherit;
-  font-size: 0.76rem;
+  font-size: 0.8rem;
   font-weight: 800;
   letter-spacing: 0.12em;
   line-height: inherit;
@@ -463,18 +464,6 @@ button:focus-visible,
   text-transform: uppercase;
 }
 
-.home-hub-links a:hover {
-  color: var(--temp-muted);
-}
-
-.home-hub-icon-links {
-  align-items: center;
-  display: flex;
-  gap: 1.15rem;
-  margin: 0 0 2.5rem;
-}
-
-.home-hub-icon-links a,
 .home-hub-icon-button {
   align-items: center;
   appearance: none;
@@ -484,15 +473,15 @@ button:focus-visible,
   cursor: pointer;
   display: inline-flex;
   font-family: inherit;
-  font-size: 1.15rem;
-  height: 1.75rem;
+  font-size: 1.3rem;
+  height: 2rem;
   justify-content: center;
   padding: 0;
   text-decoration: none;
-  width: 1.75rem;
+  width: 2rem;
 }
 
-.home-hub-icon-links a:hover,
+.home-hub-actions a:hover,
 .home-hub-icon-button:hover {
   color: var(--temp-ink);
   text-decoration: none;
@@ -500,15 +489,15 @@ button:focus-visible,
 
 .home-hub-icon-button svg {
   fill: none;
-  height: 1.05rem;
+  height: 1.18rem;
   stroke: currentcolor;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 1.8;
-  width: 1.05rem;
+  width: 1.18rem;
 }
 
-.home-hub-icon-links span {
+.home-hub-actions span {
   font-size: 0.66rem;
   font-weight: 850;
   letter-spacing: 0.08em;
@@ -555,7 +544,7 @@ footer a:hover {
 
 html[data-theme="dark"] .home-hub-advisor,
 html[data-theme="dark"] .home-hub-photo-caption,
-html[data-theme="dark"] .home-hub-icon-links a,
+html[data-theme="dark"] .home-hub-actions a,
 html[data-theme="dark"] .home-hub-icon-button {
   color: #b0a79c;
 }
