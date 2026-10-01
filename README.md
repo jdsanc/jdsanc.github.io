@@ -9,7 +9,7 @@ Personal academic website at https://jdsanc.github.io/, built with Jekyll and ho
 - `_data/socials.yml`: contact, Google Scholar, and profile links.
 - `_data/cv.yml`: CV content.
 - `assets/img/headshot.png`: square portrait.
-- `_sass/_academic.scss`: responsive layout and typography.
+- `assets/css/main.css`: responsive layout and typography.
 
 “All publications” links directly to Google Scholar. The old `/publications/` URL redirects there. `/cv/` remains an accessible HTML CV. The site uses no JavaScript, analytics, external UI libraries, or remote fonts.
 

@@ -17,5 +17,3 @@ exclude:
   - _bibliography
 plugins:
   - jekyll-sitemap
-sass:
-  style: compressed

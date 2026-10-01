@@ -1,15 +1,17 @@
-$background: #fafaf8;
-$ink: #252824;
-$muted: #646760;
-$link: #365844;
-$rule: #dddfd7;
+:root {
+  --color-background: #fafaf8;
+  --color-text: #252824;
+  --color-muted: #646760;
+  --color-link: #365844;
+  --color-rule: #dddfd7;
+}
 
 * { box-sizing: border-box; }
 html { color-scheme: light; }
 body {
   margin: 0;
-  background: $background;
-  color: $ink;
+  background: var(--color-background);
+  color: var(--color-text);
   font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 16px;
   line-height: 1.6875;
@@ -22,14 +24,14 @@ body {
 }
 main { outline: none; }
 a {
-  color: $link;
+  color: var(--color-link);
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
   overflow-wrap: anywhere;
 }
-a:hover { color: $ink; }
+a:hover { color: var(--color-text); }
 a:focus-visible {
-  outline: 2px solid $link;
+  outline: 2px solid var(--color-link);
   outline-offset: 4px;
   border-radius: 1px;
 }
@@ -53,16 +55,16 @@ h3 { font-size: 16px; line-height: 27px; font-weight: 500; }
   object-fit: cover;
   border-radius: 3px;
 }
-.affiliation { color: $muted; margin-top: 5px; }
+.affiliation { color: var(--color-muted); margin-top: 5px; }
 .research-summary { margin-top: 22px; }
 .primary-links { display: flex; flex-wrap: wrap; gap: 5px 20px; margin-top: 22px; }
 .primary-links a { white-space: nowrap; }
 .selected-publications { margin-top: 58px; }
 .publication-list { list-style: none; margin: 24px 0 0; padding: 0; }
 .publication + .publication { margin-top: 28px; }
-.publication h3 a { color: $ink; }
-.publication h3 a:hover { color: $link; }
-.publication-authors, .publication-meta { color: $muted; font-size: 14px; line-height: 23px; }
+.publication h3 a { color: var(--color-text); }
+.publication h3 a:hover { color: var(--color-link); }
+.publication-authors, .publication-meta { color: var(--color-muted); font-size: 14px; line-height: 23px; }
 .publication-authors { margin-top: 6px; }
 .publication-meta { margin-top: 1px; }
 .all-publications { margin-top: 26px; font-size: 14px; }
@@ -73,29 +75,29 @@ h3 { font-size: 16px; line-height: 27px; font-weight: 500; }
   gap: 4px 9px;
   margin-top: 58px;
   padding-top: 20px;
-  border-top: 1px solid $rule;
-  color: $muted;
+  border-top: 1px solid var(--color-rule);
+  color: var(--color-muted);
   font-size: 13px;
   line-height: 22px;
 }
-.site-footer a { color: $muted; }
+.site-footer a { color: var(--color-muted); }
 .subpage-header { margin-bottom: 36px; font-size: 14px; }
 .page-content > p { margin-top: 20px; }
-.page-description { color: $muted; }
+.page-description { color: var(--color-muted); }
 .cv-header > p { margin-top: 16px; }
 .cv-section { margin-top: 38px; }
 .cv-entries { list-style: none; margin: 18px 0 0; padding: 0; }
 .cv-entry + .cv-entry { margin-top: 25px; }
 .cv-entry h3 { font-weight: 600; }
 .cv-entry p { margin-top: 3px; }
-.cv-meta { color: $muted; font-size: 14px; }
+.cv-meta { color: var(--color-muted); font-size: 14px; }
 .skip-link {
   position: absolute;
   top: 12px;
   left: 12px;
   transform: translateY(-200%);
   padding: 8px 12px;
-  background: $background;
+  background: var(--color-background);
   z-index: 1;
 }
 .skip-link:focus { transform: translateY(0); }
