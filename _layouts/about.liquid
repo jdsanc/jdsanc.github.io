@@ -1,69 +1,31 @@
 ---
 layout: default
 ---
-<div class="home-hub">
-  <div class="home-hub-intro">
-    <div class="home-hub-copy">
-      <header class="home-hub-header">
-        <h1 class="home-hub-title">
-          {% if site.title == 'blank' %}
-            {{ site.first_name }} {{ site.middle_name }} {{ site.last_name }}
-          {% else %}
-            {{ site.title }}
-          {% endif %}
-        </h1>
-        <p class="home-hub-subtitle">{{ page.subtitle }}</p>
-        <p class="home-hub-advisor">Advisor: Rafael Gomez-Bombarelli</p>
-      </header>
-
-      <div class="home-hub-body">
-        {{ content }}
-      </div>
-    </div>
-
-    {% if page.profile and page.profile.image %}
-      {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
-      <div class="home-hub-photo">
-        {%
-          include figure.liquid
-          loading="eager"
-          path=profile_image_path
-          class="home-hub-img"
-          sizes="136px"
-          alt=page.profile.image
-          cache_bust=true
-        %}
-        <p class="home-hub-photo-caption">Cambridge, MA</p>
-      </div>
-    {% endif %}
-  </div>
-
-  <nav class="home-hub-actions" aria-label="Primary links">
-    <a href="{{ '/assets/pdf/Jesus_Diaz_Sanchez_CV.pdf' | relative_url }}">CV</a>
-    <button
-      class="home-hub-icon-button"
-      type="button"
-      data-contact-user="sdiazjes"
-      data-contact-domain="gmail"
-      data-contact-tld="com"
-      aria-label="Email"
-    >
-      <svg aria-hidden="true" viewBox="0 0 24 24">
-        <path d="M4.75 6.75h14.5v10.5H4.75z" />
-        <path d="m5.25 7.25 6.75 5.6 6.75-5.6" />
-      </svg>
-    </button>
-    <a href="https://github.com/{{ site.data.socials.github_username }}" aria-label="GitHub">
-      <i class="si si-github" aria-hidden="true"></i>
-    </a>
-    <a href="https://www.linkedin.com/in/{{ site.data.socials.linkedin_username }}" aria-label="LinkedIn">
-      <i class="si si-linkedin" aria-hidden="true"></i>
-    </a>
-    <a href="https://scholar.google.com/citations?user={{ site.data.socials.scholar_userid }}" aria-label="Google Scholar">
-      <i class="si si-google-scholar" aria-hidden="true"></i>
-    </a>
-    <a href="{{ site.data.socials.lab_url }}" aria-label="{{ site.data.socials.lab_name }}">
-      <span aria-hidden="true">Lab</span>
-    </a>
-  </nav>
+<div class="home-intro">
+  <img class="headshot" src="{{ '/assets/img/headshot.png' | relative_url }}" width="136" height="136" alt="Jesus Diaz Sanchez">
+  <header class="intro">
+    <h1>{{ site.title }}</h1>
+    <p class="affiliation">{{ page.subtitle }}</p>
+    <div class="research-summary">{{ content }}</div>
+    <nav class="primary-links" aria-label="Contact and profiles">
+      <a href="mailto:{{ site.data.socials.email }}">Email</a>
+      <a href="https://scholar.google.com/citations?user={{ site.data.socials.scholar_userid }}">Scholar</a>
+      <a href="https://github.com/{{ site.data.socials.github_username }}">GitHub</a>
+      <a href="https://www.linkedin.com/in/{{ site.data.socials.linkedin_username }}/">LinkedIn</a>
+      <a href="{{ '/cv/' | relative_url }}">CV</a>
+    </nav>
+  </header>
 </div>
+<section class="selected-publications" aria-labelledby="publications-heading">
+  <h2 id="publications-heading">Selected publications</h2>
+  <ol class="publication-list">
+    {% for publication in site.data.publications %}
+    <li class="publication">
+      <h3><a href="{{ publication.url }}">{{ publication.title }}</a></h3>
+      <p class="publication-authors">{{ publication.authors }}</p>
+      <p class="publication-meta">{{ publication.venue }} <span aria-hidden="true">·</span> {{ publication.year }}</p>
+    </li>
+    {% endfor %}
+  </ol>
+  <p class="all-publications"><a href="https://scholar.google.com/citations?user={{ site.data.socials.scholar_userid }}">All publications <span aria-hidden="true">↗</span></a></p>
+</section>

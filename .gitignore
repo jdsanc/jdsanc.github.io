@@ -14,7 +14,6 @@ assets/rendercv/rendercv_output/*.typ
 build/
 coverage/
 dist/
-Gemfile.lock
 node_modules/
 vendor
 *.log

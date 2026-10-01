@@ -1,157 +1,21 @@
-# Site
-title: blank
-first_name: Jesus
-middle_name:
-last_name: Diaz Sanchez
-contact_note: >
-  The best way to reach me is via email.
-description: >
-  Jesus Diaz Sanchez - Ph.D. researcher at MIT. Interested in making sense of
-  disparate chemical data streams for chemical reasoning.
-footer_text:
-keywords: Jesus Diaz Sanchez, MIT, computational chemistry, chemical informatics, machine learning, spectroscopy, molecular dynamics
-lang: en
-icon:
-
+title: Jesus Diaz Sanchez
+description: MIT PhD researcher developing machine learning methods for chemistry and materials science, including representation learning, autonomous AI co-scientists, and VLM/LLM post-training.
 url: https://jdsanc.github.io
-baseurl:
-last_updated: false
-back_to_top: true
-
-# Layout
-navbar_fixed: true
-footer_fixed: false
-search_enabled: false
-socials_in_search: false
-posts_in_search: false
-bib_search: true
-max_width: 1024px
-serve_og_meta: true
-serve_schema_org: false
-og_image:
-
-# Build
+baseurl: ""
+lang: en
 markdown: kramdown
-highlighter: rouge
-kramdown:
-  input: GFM
-  syntax_highlighter_opts:
-    css_class: "highlight"
-    span:
-      line_numbers: false
-    block:
-      line_numbers: false
-      start_line: 1
-
 include:
   - _pages
 exclude:
   - Gemfile
   - Gemfile.lock
+  - README.md
   - vendor
-keep_files:
-  - CNAME
-  - .nojekyll
-
+  - scripts
+  - .bundle
+  - .github
+  - _bibliography
 plugins:
-  - jekyll-cache-bust
-  - jekyll-email-protect
-  - jekyll-feed
-  - jekyll/scholar
   - jekyll-sitemap
-  - jekyll-socials
-
-defaults:
-  - scope:
-      path: "assets"
-    values:
-      sitemap: false
-
 sass:
   style: compressed
-
-# Publications
-scholar:
-  last_name: [Diaz Sanchez]
-  first_name: [Jesus, J.]
-  style: apa
-  locale: en
-  source: /_bibliography/
-  bibliography: papers.bib
-  bibliography_template: bib
-  bibtex_filters: [latex, smallcaps, superscript]
-  replace_strings: true
-  join_strings: true
-  details_dir: bibliography
-  details_link: Details
-  query: "@*"
-  group_by: year
-  group_order: descending
-
-enable_publication_badges:
-  altmetric: false
-  dimensions: false
-  google_scholar: false
-  inspirehep: false
-
-filtered_bibtex_keywords:
-  [
-    abbr,
-    abstract,
-    additional_info,
-    altmetric,
-    annotation,
-    arxiv,
-    award,
-    award_name,
-    bibtex_show,
-    bibtex_file,
-    blog,
-    code,
-    dimensions,
-    eprint,
-    google_scholar_id,
-    hal,
-    html,
-    inspirehep_id,
-    pdf,
-    pmid,
-    poster,
-    preview,
-    pub_links_minimal,
-    selected,
-    slides,
-    supp,
-    video,
-    website,
-  ]
-max_author_limit: 3
-more_authors_animation_delay: 10
-enable_publication_thumbnails: false
-
-# Optional features kept intentionally small.
-imagemagick:
-  enabled: false
-lazy_loading_images: true
-enable_darkmode: true
-enable_navbar_social: false
-enable_progressbar: true
-enable_math: false
-enable_masonry: false
-enable_medium_zoom: false
-enable_tooltips: false
-enable_google_analytics: false
-enable_cronitor_analytics: false
-enable_pirsch_analytics: false
-enable_openpanel_analytics: false
-enable_google_verification: false
-enable_bing_verification: false
-enable_cookie_consent: false
-newsletter:
-  enabled: false
-
-external_links:
-  enabled: true
-  rel: external nofollow noopener
-  target: _blank
-  exclude:

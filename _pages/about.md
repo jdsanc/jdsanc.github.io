@@ -1,19 +1,8 @@
 ---
 layout: about
-title: about
+title: Jesus Diaz Sanchez
 permalink: /
-subtitle: Ph.D. Researcher at MIT.
-
-profile:
-  align: right
-  image: prof_pic.png
-  image_circular: false # crops the image to make it circular
-  more_info: >
-    <p>Cambridge, MA</p>
-    <p>Advisor: Rafael Gómez-Bombarelli</p>
-
-selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true # includes social icons at the bottom of the page
+subtitle: I’m a PhD researcher at MIT, advised by Rafael Gómez-Bombarelli.
 ---
 
-Interested in how to meaningfully utilize diparate data for chemical reasoning.
+I am interested in machine learning methods to solve challenging problems in chemistry and materials science. I have produced work in representation learning, autonomous AI co-scientists, and VLM/LLM post-training with verifiable and non-verifiable rewards.
