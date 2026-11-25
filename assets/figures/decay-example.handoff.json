@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "fonts": {
+    "labels": "DM Sans",
+    "optional_heading": "DM Serif Text",
+    "scientific_symbols": "DejaVu Sans and DejaVu Sans math (Matplotlib bundled)",
+    "svg_text": "editable; DM Sans Regular embedded as an OFL-licensed data font",
+    "pdf_text": "embedded subset fonts"
+  },
+  "compact_type": false,
+  "provisional_print_size": true,
+  "requested_print_width_mm": 140.0,
+  "slide_width_px": 780,
+  "modes": {
+    "slide-light": {
+      "width_pt": 585.0,
+      "height_pt": 411.2150730982723,
+      "background": "transparent",
+      "files": {
+        "svg": "decay-example_slide-light.svg",
+        "pdf": "decay-example_slide-light.pdf"
+      },
+      "width_px": 780,
+      "height_px": 548.2867641310297,
+      "minimum_font_px": 24.0
+    },
+    "print": {
+      "width_pt": 396.8503937007874,
+      "height_pt": 277.10045458048734,
+      "background": "white",
+      "files": {
+        "svg": "decay-example_print.svg",
+        "pdf": "decay-example_print.pdf"
+      },
+      "width_mm": 140.0,
+      "height_mm": 97.75488258811636,
+      "minimum_font_pt": 8.0
+    }
+  },
+  "raster_content": false,
+  "checks": {
+    "svg_viewbox": true,
+    "vector_pdf": true,
+    "pdf_text_bounds": true,
+    "destination_placement": "requires inspection in destination application"
+  },
+  "geometry_sized_labels": false,
+  "assumptions": [
+    "96 CSS pixels per inch for slide placement",
+    "sRGB colors"
+  ]
+}

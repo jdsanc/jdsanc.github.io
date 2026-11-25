@@ -1,0 +1,15 @@
+{% assign publications = site.data.publications | sort: 'year' | reverse %}
+{% assign count = include.limit | default: publications.size %}
+{% assign level = include.level | default: 3 %}
+<ol class="publication-list" role="list">
+  {% for paper in publications limit:count %}
+  <li class="publication">
+    <span class="pub-year">{{ paper.year }}</span>
+    <div class="pub-detail">
+      <h{{ level }} class="pub-title"><a href="{{ paper.url | escape }}">{{ paper.title | escape }}</a></h{{ level }}>
+      <p class="pub-authors">{{ paper.authors | escape }}</p>
+      <p class="pub-venue">{{ paper.venue | escape }}</p>
+    </div>
+  </li>
+  {% endfor %}
+</ol>

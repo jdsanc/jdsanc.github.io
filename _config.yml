@@ -1,7 +1,9 @@
 title: Jesus Diaz Sanchez
-description: MIT PhD researcher developing machine learning methods for chemistry and materials science, including representation learning, autonomous AI co-scientists, and VLM/LLM post-training.
+description: Jesus Diaz Sanchez is a PhD researcher at MIT working on machine learning for chemistry and materials science.
 url: https://jdsanc.github.io
 baseurl: ""
+# Point this at the current résumé PDF to enable the CV link.
+resume_url:
 lang: en
 markdown: kramdown
 include:

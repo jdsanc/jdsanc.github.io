@@ -1,5 +1,9 @@
-{% if page.permalink != '/' %}
-<header class="subpage-header">
-  <a href="{{ '/' | relative_url }}">Jesus Diaz Sanchez</a>
+<header class="site-header">
+  <nav class="site-nav" aria-label="Main">
+    <a class="home-link" href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Research portfolio</a>
+    <div class="nav-pages">
+      <a href="{{ '/publications/' | relative_url }}"{% if page.url == '/publications/' %} aria-current="page"{% endif %}>Publications</a>
+      {% if site.resume_url %}<a href="{{ site.resume_url | relative_url }}" type="application/pdf">CV <span class="file-type">PDF</span></a>{% endif %}
+    </div>
+  </nav>
 </header>
-{% endif %}

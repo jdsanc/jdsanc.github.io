@@ -1,21 +1,30 @@
 # Jesus Diaz Sanchez
 
-Personal academic website at https://jdsanc.github.io/, built with Jekyll and hosted on GitHub Pages.
+Academic portfolio of Jesus Diaz Sanchez at MIT. The site brings together his research interests, selected publications, and the visual standard he uses for scientific figures and presentations.
 
-## Edit content
+[Portfolio](https://jdsanc.github.io/) · [Publications](https://jdsanc.github.io/publications/) · [Design system](https://jdsanc.github.io/design-system/) · [GitHub profile](https://github.com/jdsanc)
 
-- `_pages/about.md`: affiliation and research bio.
-- `_data/publications.yml`: selected publications, newest first.
-- `_data/socials.yml`: contact, Google Scholar, and profile links.
-- `_data/cv.yml`: retained CV content (not published).
-- `assets/img/headshot.png`: square portrait.
-- `assets/css/main.css`: responsive layout and typography.
+## Design system
 
-“All publications” links directly to Google Scholar. The old `/publications/` URL redirects there. The CV link and `/cv/` page are disabled; the source is retained for future use. The site uses no JavaScript, analytics, external UI libraries, or remote fonts.
+The homepage uses DM Serif Display Regular for the cover, DM Serif Text Regular for section and publication headings, and DM Sans for text and navigation. White paper, dark ink, and one teal accent carry through the site. The responsive layout keeps the reference’s generous margins and lets the text determine the height of each section.
+
+The [figure guide](_pages/design-system.md) includes the compact type scale, legend and panel rules, and a worked example with editable slide and print exports. The [example generator](scripts/decay-example.py) uses the Cyma figure exporter. The finished SVG and PDF assets work independently. Font files and their licenses are in [assets/fonts](assets/fonts/).
+
+## Edit the portfolio
+
+| Content | Source |
+| --- | --- |
+| Homepage bio and affiliation | [_pages/about.md](_pages/about.md) |
+| Publications shown on the homepage and publications page | [_data/publications.yml](_data/publications.yml) |
+| Contact and academic profiles | [_data/socials.yml](_data/socials.yml) |
+| Navigation and footer | [_includes](_includes/) |
+| Web typography, colors, and responsive spacing | [assets/css/main.css](assets/css/main.css) |
+
+To enable the CV link, set `resume_url` in [_config.yml](_config.yml) to the public PDF path or HTTPS URL. The navigation opens that file directly.
 
 ## Build locally
 
-Use Ruby 3.3, matching the GitHub Actions workflow:
+With Ruby 3.3 and the repository’s locked gems installed, run the following from the checkout.
 
 ```sh
 bundle install
@@ -23,4 +32,4 @@ bundle exec jekyll build --strict_front_matter
 bundle exec jekyll serve
 ```
 
-Pushes to `main` build and deploy through `.github/workflows/pages.yml`. In repository settings, GitHub Pages should use **GitHub Actions** as its source.
+The site serves its own styles, fonts, and images. Pushes to `main` trigger the [GitHub Pages workflow](.github/workflows/pages.yml).

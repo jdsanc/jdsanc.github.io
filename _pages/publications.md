@@ -2,8 +2,9 @@
 layout: page
 permalink: /publications/
 title: Publications
-redirect_url: https://scholar.google.com/citations?user=sTrk6g4AAAAJ
-sitemap: false
+description: Selected papers and preprints in chemistry, materials science, and machine learning.
 ---
-
-Find my [publications on Google Scholar](https://scholar.google.com/citations?user=sTrk6g4AAAAJ).
+<div class="publications-index">
+  {% include publication-list.liquid level=2 %}
+  <p class="scholar-link"><a class="editorial-link" href="https://scholar.google.com/citations?user={{ site.data.socials.scholar_userid }}">All publications on Google Scholar <span aria-hidden="true">↗</span></a></p>
+</div>
